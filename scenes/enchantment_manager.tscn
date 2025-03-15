@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://chyxuydo0t35b"]
+
+[ext_resource type="Script" uid="uid://ccibqsq28hl22" path="res://scripts/enchantments/enchantment_manager.gd" id="1_5g82m"]
+
+[node name="UpgradeManager" type="Node2D"]
+script = ExtResource("1_5g82m")
