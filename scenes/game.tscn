@@ -12,9 +12,9 @@ shader_parameter/whiten = false
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_lnu2h")]
-position = Vector2(698, 156)
+position = Vector2(71, -37)
 rotation = -0.00345038
 whiten_material = SubResource("ShaderMaterial_0sr1o")
 
 [node name="WaveHandler" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(903, 263)
+position = Vector2(0, 0)

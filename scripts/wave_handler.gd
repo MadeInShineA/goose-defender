@@ -19,7 +19,6 @@ func handle_enemy_death():
 		
 	
 func spawn_ennemies():
-	print("Spawning ennemies")
 	for i in range(get_number_of_enemy_for_current_level()):
 		var monster = monster.instantiate()
 		
@@ -45,5 +44,4 @@ func _on_in_between_waves_timer_timeout() -> void:
 
 
 func _on_enemy_died() -> void:
-	print("Ennemi died")
 	handle_enemy_death()

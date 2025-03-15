@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Enemy
 
 @onready var hurtbox = $hurtbox
 @onready var blinker = $blinker
@@ -14,8 +15,14 @@ signal died
 var speed = 150
 var target: CharacterBody2D
 
+
+func  _ready() -> void:
+	var player: Player = get_tree().get_first_node_in_group("PlayerGroup")
+
+	target = player
+
 func _physics_process(delta: float) -> void:
-	if target: # Vérifie que la cible a été assignée
+	if target:
 		if position.distance_to(target.position) > ATTACK_RANGE:
 			var direction = (target.position - position).normalized()
 			velocity = direction * speed
@@ -26,8 +33,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	
-	# TODO why calling the hurtbix function doesn't work ??
-	if area.get_parent() is Player:
+	if area.get_parent() is Player or area.get_parent() is Enemy:
 		pass
 	else:
 		life -= 1
