@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 Enchantable="All enchantable nodes (Player and weapons)"
 CanBlink="Is a group of target that blink when hit"
 IsProjectile=""
+PlayerGroup="This group is only for the player object"
+MobSpawner="This group serves for the different Mob spawners"
 
 [input]
 

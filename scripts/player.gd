@@ -22,6 +22,9 @@ const stun_duration: float = 1.0
 var is_stuned: bool = false
 var life: int = MAX_LIFE
 
+func _ready():
+	add_to_group("PlayerGroup")
+
 func _process(delta: float) -> void:
 	if is_stuned:
 		return

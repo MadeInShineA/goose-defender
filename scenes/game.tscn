@@ -1,15 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmg7usyb3ym41"]
+[gd_scene load_steps=5 format=3 uid="uid://cmg7usyb3ym41"]
 
 [ext_resource type="PackedScene" uid="uid://0ivogf4nn6u6" path="res://scenes/player.tscn" id="1_lnu2h"]
 [ext_resource type="Shader" uid="uid://bcp4ueopqumyn" path="res://resources/hit-shader.gdshader" id="2_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://ghue8q3t70uy" path="res://scenes/enemy.tscn" id="3_iywne"]
+[ext_resource type="PackedScene" uid="uid://pwcdgcptf1p6" path="res://scenes/wave_handler.tscn" id="4_lbhrr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0sr1o"]
-resource_local_to_scene = true
-shader = ExtResource("2_lbhrr")
-shader_parameter/whiten = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kelw5"]
 resource_local_to_scene = true
 shader = ExtResource("2_lbhrr")
 shader_parameter/whiten = false
@@ -21,6 +16,5 @@ position = Vector2(698, 156)
 rotation = -0.00345038
 whiten_material = SubResource("ShaderMaterial_0sr1o")
 
-[node name="Enemy" parent="." instance=ExtResource("3_iywne")]
-position = Vector2(198, 156)
-whiten_material = SubResource("ShaderMaterial_kelw5")
+[node name="WaveHandler" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(903, 263)

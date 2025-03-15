@@ -116,7 +116,7 @@ height = 15.987
 radius = 4.0
 height = 20.0
 
-[node name="Player" type="CharacterBody2D" groups=["CanBlink"]]
+[node name="Player" type="CharacterBody2D" groups=["CanBlink", "PlayerGroup"]]
 script = ExtResource("1_sweqy")
 whiten_material = ExtResource("2_p47bc")
 
