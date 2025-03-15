@@ -1,12 +1,22 @@
 extends Panel
 
-# var upgrade: Upgrade
-
+@export_category("Hover animations")
 @export var intensity: float = 0.1
 @export var duration: float = 0.2
 
+var nameLabel: Label
+var spellImage: TextureRect
+var descriptionLabel: Label
+
 func _ready() -> void:
-	pass
+	nameLabel = get_node("Button/Name")
+	spellImage = get_node("Button/SpellIcon")
+	descriptionLabel = get_node("Button/Description")
+	
+func set_enchant(able: Enchantable, e: Enchantment) -> void:
+	nameLabel.text = able.enchantable_name
+	spellImage.texture = able.enchantment_texture
+	descriptionLabel.text = "+{enchantment_boost} {enchantment_name}".format(e)
 	
 func _process(delta: float) -> void:
 	# Get all the children buttons of this Node

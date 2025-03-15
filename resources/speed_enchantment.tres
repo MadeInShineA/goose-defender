@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SpeedEnchantment" load_steps=2 format=3 uid="uid://n5sbo7jmiheq"]
+
+[ext_resource type="Script" uid="uid://b075uptsk46re" path="res://scripts/enchantments/speed_enchantment.gd" id="1_2pwwi"]
+
+[resource]
+script = ExtResource("1_2pwwi")
+enchantment_name = "Speed Enchantment"
+enchantment_boost = 0.2
+metadata/_custom_type_script = "uid://b075uptsk46re"

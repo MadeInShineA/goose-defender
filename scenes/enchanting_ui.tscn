@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv4fdij1ccgy4"]
+[gd_scene load_steps=3 format=3 uid="uid://dv4fdij1ccgy4"]
 
-[ext_resource type="PackedScene" uid="uid://btl5bple7viur" path="res://scenes/spell_upgrade.tscn" id="1_cltfj"]
+[ext_resource type="Script" uid="uid://b3k306rhy8sv2" path="res://scripts/ui/enchanting_ui.gd" id="1_01r1k"]
+[ext_resource type="PackedScene" uid="uid://btl5bple7viur" path="res://scenes/spell_enchant.tscn" id="1_cltfj"]
 
 [node name="Enchanting" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_01r1k")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
@@ -26,11 +28,17 @@ grow_vertical = 2
 theme_override_constants/h_separation = 365
 columns = 3
 
-[node name="SpellUpgrade" parent="GridContainer" instance=ExtResource("1_cltfj")]
+[node name="SpellEnchant1" parent="GridContainer" groups=["SpellPanel"] instance=ExtResource("1_cltfj")]
 layout_mode = 2
+intensity = 0.1
+duration = 0.2
 
-[node name="SpellUpgrade2" parent="GridContainer" instance=ExtResource("1_cltfj")]
+[node name="SpellEnchant2" parent="GridContainer" groups=["SpellPanel"] instance=ExtResource("1_cltfj")]
 layout_mode = 2
+intensity = 0.1
+duration = 0.2
 
-[node name="SpellUpgrade3" parent="GridContainer" instance=ExtResource("1_cltfj")]
+[node name="SpellEnchant3" parent="GridContainer" groups=["SpellPanel"] instance=ExtResource("1_cltfj")]
 layout_mode = 2
+intensity = 0.1
+duration = 0.2
