@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://duo8yawgjwbj8"]
 
-[ext_resource type="Script" uid="uid://d0hh6ye31nlyb" path="res://projectile.gd" id="1_qxf0c"]
+[ext_resource type="Script" uid="uid://d0hh6ye31nlyb" path="res://scenes/projectile/projectile.gd" id="1_qxf0c"]
 [ext_resource type="Texture2D" uid="uid://chrciew14j4m2" path="res://sprites/fireball/FB500-1.png" id="2_dgwo2"]
 [ext_resource type="Texture2D" uid="uid://cxd3qevjwrcrk" path="res://sprites/fireball/FB500-2.png" id="3_dac07"]
 [ext_resource type="Texture2D" uid="uid://ctbrgyffc8gf1" path="res://sprites/fireball/FB500-3.png" id="4_0c7x6"]

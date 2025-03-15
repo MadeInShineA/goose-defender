@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://y8av8bqvegr8"]
 
-[ext_resource type="Script" uid="uid://t5wk5j0nf8kp" path="res://staff.gd" id="1_ycvyx"]
+[ext_resource type="Script" uid="uid://t5wk5j0nf8kp" path="res://scenes/staff/staff.gd" id="1_ycvyx"]
 [ext_resource type="Texture2D" uid="uid://cal1lg0lxkg2" path="res://sprites/staves/staff16.png" id="2_ycvyx"]
 
 [node name="staff" type="Node2D"]

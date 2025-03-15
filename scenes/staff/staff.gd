@@ -1,6 +1,6 @@
 extends Node2D
 
-const PROJECTILE = preload("res://projectile.tscn")
+const PROJECTILE = preload("res://scenes/projectile/projectile.tscn")
 @onready var fire_point: Marker2D = $Marker2D
 
 func _process(delta: float) -> void:

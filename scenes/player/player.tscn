@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://0ivogf4nn6u6"]
 
-[ext_resource type="Script" uid="uid://dph8r1fa6o7oi" path="res://player.gd" id="1_sweqy"]
-[ext_resource type="Texture2D" uid="uid://b6rlw71s26aas" path="res://sprites/char_a_p1_0bas_humn_v01.png" id="2_onrkg"]
-[ext_resource type="PackedScene" uid="uid://y8av8bqvegr8" path="res://staff.tscn" id="3_i3pqv"]
+[ext_resource type="Script" uid="uid://dph8r1fa6o7oi" path="res://scenes/player/player.gd" id="1_sweqy"]
+[ext_resource type="Texture2D" uid="uid://b6rlw71s26aas" path="res://sprites/character/char_a_p1_0bas_humn_v01.png" id="2_onrkg"]
+[ext_resource type="PackedScene" uid="uid://y8av8bqvegr8" path="res://scenes/staff/staff.tscn" id="3_i3pqv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1jxqw"]
 atlas = ExtResource("2_onrkg")
@@ -85,6 +85,7 @@ position = Vector2(0.5, 0.5)
 scale = Vector2(0.484375, 0.484375)
 sprite_frames = SubResource("SpriteFrames_n7ghd")
 animation = &"left"
+frame_progress = 0.783063
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
@@ -99,4 +100,3 @@ position = Vector2(3, 0)
 
 [node name="staff" parent="." instance=ExtResource("3_i3pqv")]
 position = Vector2(3, -5.96046e-08)
-scale = Vector2(1, 1)
