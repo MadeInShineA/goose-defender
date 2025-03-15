@@ -1,10 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://ghue8q3t70uy"]
 
-[ext_resource type="Script" uid="uid://c1wvpwxv6tp6j" path="res://scenes/enemy/enemy.gd" id="1_a3pup"]
+[ext_resource type="Script" uid="uid://c1wvpwxv6tp6j" path="res://scripts/enemy.gd" id="1_a3pup"]
 [ext_resource type="Texture2D" uid="uid://33753ss22kl4" path="res://icon.svg" id="2_40wdo"]
-[ext_resource type="Material" uid="uid://crd3kqv364xga" path="res://scenes/enemy/enemy.tres" id="2_tjssy"]
-[ext_resource type="Script" uid="uid://dnlhw6wh2mkwi" path="res://scenes/enemy/hurtbox.gd" id="3_40wdo"]
+[ext_resource type="Material" uid="uid://crd3kqv364xga" path="res://resources/white-blink.tres" id="2_tjssy"]
 [ext_resource type="PackedScene" uid="uid://dh60tdtrgj7mm" path="res://scenes/blinker/blinker.tscn" id="5_gl05p"]
+
+[sub_resource type="GDScript" id="GDScript_5uy6h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
 size = Vector2(63, 62.5)
@@ -26,7 +27,7 @@ texture = ExtResource("2_40wdo")
 [node name="hurtbox" type="Area2D" parent="."]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("3_40wdo")
+script = SubResource("GDScript_5uy6h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
 position = Vector2(0.5, -0.75)

@@ -1,13 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://oqnnuvygfqck"]
+[gd_scene load_steps=14 format=3 uid="uid://oqnnuvygfqck"]
 
 [ext_resource type="PackedScene" uid="uid://l6i72lifskfg" path="res://scenes/weapon.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://dv4fdij1ccgy4" path="res://scenes/enchanting_ui.tscn" id="2_0wfyh"]
-[ext_resource type="Texture2D" uid="uid://c5x7keinvwntj" path="res://sprites/staves/book1.png" id="2_o6xl0"]
-[ext_resource type="Texture2D" uid="uid://cml68enw3i6gm" path="res://sprites/staves/staff34.png" id="2_tipki"]
+[ext_resource type="Texture2D" uid="uid://cc7si78h1d2e" path="res://sprites/staves/book1.png" id="2_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://cwexfn2y6at5x" path="res://sprites/staves/staff34.png" id="2_tipki"]
 [ext_resource type="PackedScene" uid="uid://chyxuydo0t35b" path="res://scenes/enchantment_manager.tscn" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://c1rjfxnh48nvp" path="res://scripts/enchantments/enchantment.gd" id="3_tefeu"]
 [ext_resource type="Resource" uid="uid://n5sbo7jmiheq" path="res://resources/speed_enchantment.tres" id="4_o6xl0"]
 [ext_resource type="Resource" uid="uid://bbfgryqgo020p" path="res://resources/damage_enchantment.tres" id="5_tipki"]
+[ext_resource type="PackedScene" uid="uid://0ivogf4nn6u6" path="res://scenes/player.tscn" id="9_choun"]
+[ext_resource type="Shader" uid="uid://bcp4ueopqumyn" path="res://resources/hit-shader.gdshader" id="10_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://ghue8q3t70uy" path="res://scenes/enemy.tscn" id="11_ya4ey"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eb6dy"]
+resource_local_to_scene = true
+shader = ExtResource("10_ya4ey")
+shader_parameter/whiten = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trceg"]
+resource_local_to_scene = true
+shader = ExtResource("10_ya4ey")
+shader_parameter/whiten = false
 
 [node name="Main" type="Node2D"]
 
@@ -39,5 +52,11 @@ enchantments = Dictionary[String, ExtResource("3_tefeu")]({
 "Speed Enchantment": ExtResource("4_o6xl0")
 })
 enchant_ui = NodePath("../CanvasLayer/Enchanting")
+
+[node name="Player" parent="." instance=ExtResource("9_choun")]
+whiten_material = SubResource("ShaderMaterial_eb6dy")
+
+[node name="Enemy" parent="." instance=ExtResource("11_ya4ey")]
+whiten_material = SubResource("ShaderMaterial_trceg")
 
 [connection signal="open_menu" from="EnchantManager" to="CanvasLayer/Enchanting" method="_on_enchant_manager_open_menu"]
