@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const MAX_SPEED: int = 50
+const MAX_SPEED: int = 300
 const ACCELERATION: int = 10000
 const FRICTION: int = 100000
 
