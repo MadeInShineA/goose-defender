@@ -9,9 +9,6 @@ extends CharacterBody2D
 const whiten_duration: float = 0.15
 const blinking_duration = 1
 
-
-
-
 var target: Node2D = null
 var speed = 150
 
