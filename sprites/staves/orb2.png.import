@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwexfn2y6at5x"
-path="res://.godot/imported/staff34.png-7927400887d8824fa05994bf4d52d318.ctex"
+uid="uid://cwsqj7y8ltvxj"
+path="res://.godot/imported/orb2.png-d95aaacfa1a5cf7794bb1da4653f2cc3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/staves/staff34.png"
-dest_files=["res://.godot/imported/staff34.png-7927400887d8824fa05994bf4d52d318.ctex"]
+source_file="res://sprites/staves/orb2.png"
+dest_files=["res://.godot/imported/orb2.png-d95aaacfa1a5cf7794bb1da4653f2cc3.ctex"]
 
 [params]
 

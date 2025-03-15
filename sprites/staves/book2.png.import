@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwexfn2y6at5x"
-path="res://.godot/imported/staff34.png-7927400887d8824fa05994bf4d52d318.ctex"
+uid="uid://dhd8pee6ei0d3"
+path="res://.godot/imported/book2.png-b07e3ea1286e14463c46c740b01efd47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/staves/staff34.png"
-dest_files=["res://.godot/imported/staff34.png-7927400887d8824fa05994bf4d52d318.ctex"]
+source_file="res://sprites/staves/book2.png"
+dest_files=["res://.godot/imported/book2.png-b07e3ea1286e14463c46c740b01efd47.ctex"]
 
 [params]
 

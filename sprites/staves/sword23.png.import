@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwexfn2y6at5x"
-path="res://.godot/imported/staff34.png-7927400887d8824fa05994bf4d52d318.ctex"
+uid="uid://dk2vj38hshfiy"
+path="res://.godot/imported/sword23.png-ea6195fae1e4516680d0c77fa4389909.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/staves/staff34.png"
-dest_files=["res://.godot/imported/staff34.png-7927400887d8824fa05994bf4d52d318.ctex"]
+source_file="res://sprites/staves/sword23.png"
+dest_files=["res://.godot/imported/sword23.png-ea6195fae1e4516680d0c77fa4389909.ctex"]
 
 [params]
 

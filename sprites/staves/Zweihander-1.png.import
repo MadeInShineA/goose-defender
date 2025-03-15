@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwexfn2y6at5x"
-path="res://.godot/imported/staff34.png-7927400887d8824fa05994bf4d52d318.ctex"
+uid="uid://blsurnj4t5dcr"
+path="res://.godot/imported/Zweihander-1.png-2145ca906fa9fad08b90e50b4a7afda0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/staves/staff34.png"
-dest_files=["res://.godot/imported/staff34.png-7927400887d8824fa05994bf4d52d318.ctex"]
+source_file="res://sprites/staves/Zweihander-1.png"
+dest_files=["res://.godot/imported/Zweihander-1.png-2145ca906fa9fad08b90e50b4a7afda0.ctex"]
 
 [params]
 
