@@ -30,15 +30,13 @@ columns = 3
 
 [node name="SpellEnchant1" parent="GridContainer" groups=["SpellPanel"] instance=ExtResource("1_cltfj")]
 layout_mode = 2
-intensity = 0.1
-duration = 0.2
 
 [node name="SpellEnchant2" parent="GridContainer" groups=["SpellPanel"] instance=ExtResource("1_cltfj")]
 layout_mode = 2
-intensity = 0.1
-duration = 0.2
 
 [node name="SpellEnchant3" parent="GridContainer" groups=["SpellPanel"] instance=ExtResource("1_cltfj")]
 layout_mode = 2
-intensity = 0.1
-duration = 0.2
+
+[connection signal="enchant_selected" from="GridContainer/SpellEnchant1" to="." method="_on_enchant_selected"]
+[connection signal="enchant_selected" from="GridContainer/SpellEnchant2" to="." method="_on_enchant_selected"]
+[connection signal="enchant_selected" from="GridContainer/SpellEnchant3" to="." method="_on_enchant_selected"]

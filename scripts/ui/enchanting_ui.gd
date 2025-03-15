@@ -30,5 +30,5 @@ func _on_enchant_manager_open_menu(
 func _on_enchant_selected(enchantable, enchantment) -> void:
 	print("Selected {enchantable_name}".format(enchantable))
 	# TODO: apply enchantment to player or weapon
-	apply_enchantment.emit() 
+	apply_enchantment.emit()
 	hide()
