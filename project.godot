@@ -15,6 +15,11 @@ run/main_scene="uid://cmg7usyb3ym41"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[global_group]
+
+CanBlink="Is a group of target that blink when hit"
+IsProjectile=""
+
 [input]
 
 moving_right={
