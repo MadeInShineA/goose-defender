@@ -1,7 +1,6 @@
 extends CharacterBody2D
+class_name Enemy
 
-@onready var target1 = $"../Player"
-@onready var target2 = $"../Player"
 @onready var hurtbox = $hurtbox
 @onready var blinker = $blinker
 @onready var colision_box = $CollisionShape2D
@@ -11,24 +10,19 @@ extends CharacterBody2D
 @export var ATTACK: int = 1
 const whiten_duration: float = 0.15
 const blinking_duration = 1
+signal died
 
-var target: Node2D = null
 var speed = 150
+var target: CharacterBody2D
 
-func _ready():
-	target = get_closest_target() # Sélection de la cible au début
+func  _ready() -> void:
+	var player: Player = get_tree().get_first_node_in_group("PlayerGroup")
 
-func get_closest_target() -> Node2D:
-	var dist1 = position.distance_to(target1.position)
-	var dist2 = position.distance_to(target2.position)
-	
-	if dist1 < dist2:
-		return target1
-	else:
-		return target2
+
+	target = player
 
 func _physics_process(delta: float) -> void:
-	if target: # Vérifie que la cible a été assignée
+	if target:
 		if position.distance_to(target.position) > ATTACK_RANGE:
 			var direction = (target.position - position).normalized()
 			velocity = direction * speed
@@ -39,22 +33,13 @@ func _physics_process(delta: float) -> void:
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	
-	# TODO why calling the hurtbix function doesn't work ??
-	area.queue_free()
-
-	life -= 1
-	if life == 0:
-		self.queue_free()
-	whiten_material.set_shader_parameter("whiten", true)
-	await(get_tree().create_timer(whiten_duration)).timeout
-	whiten_material.set_shader_parameter("whiten", false)
-	blinker.start_blinking(self, blinking_duration)
-	if area.get_parent() is Player:
+	if area.get_parent() is Player or area.get_parent() is Enemy:
 		pass
 	else:
 		life -= 1
 		if life == 0:
 			self.queue_free()
+			died.emit()
 		else:
 			whiten_material.set_shader_parameter("whiten", true)
 			await(get_tree().create_timer(whiten_duration)).timeout
