@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://duo8yawgjwbj8"]
+
+[ext_resource type="Script" uid="uid://d0hh6ye31nlyb" path="res://projectile.gd" id="1_qxf0c"]
+[ext_resource type="Texture2D" uid="uid://chrciew14j4m2" path="res://sprites/fireball/FB500-1.png" id="2_dgwo2"]
+[ext_resource type="Texture2D" uid="uid://cxd3qevjwrcrk" path="res://sprites/fireball/FB500-2.png" id="3_dac07"]
+[ext_resource type="Texture2D" uid="uid://ctbrgyffc8gf1" path="res://sprites/fireball/FB500-3.png" id="4_0c7x6"]
+[ext_resource type="Texture2D" uid="uid://dit4lhoaq4cl8" path="res://sprites/fireball/FB500-4.png" id="5_wpwum"]
+[ext_resource type="Texture2D" uid="uid://bbefajfgspt0h" path="res://sprites/fireball/FB500-5.png" id="6_nsmhe"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1umjp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dgwo2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dac07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0c7x6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wpwum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nsmhe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Projectile" type="Node2D"]
+script = ExtResource("1_qxf0c")
+SPEED = 500
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_1umjp")
+frame_progress = 0.210131
