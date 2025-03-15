@@ -29,10 +29,6 @@ func get_closest_target() -> Node2D:
 
 func _physics_process(delta: float) -> void:
 	if target: # Vérifie que la cible a été assignée
-		var direction = (target.position - position).normalized()
-		velocity = direction * speed
-		look_at(target.position)
-		move_and_slide()
 		if position.distance_to(target.position) > ATTACK_RANGE:
 			var direction = (target.position - position).normalized()
 			velocity = direction * speed
