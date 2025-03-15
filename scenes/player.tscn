@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://0ivogf4nn6u6"]
+[gd_scene load_steps=21 format=3 uid="uid://0ivogf4nn6u6"]
 
 [ext_resource type="Script" uid="uid://dph8r1fa6o7oi" path="res://scripts/player.gd" id="1_sweqy"]
 [ext_resource type="Texture2D" uid="uid://b6rlw71s26aas" path="res://sprites/character/char_a_p1_0bas_humn_v01.png" id="2_onrkg"]
+[ext_resource type="Material" uid="uid://crd3kqv364xga" path="res://resources/white-blink.tres" id="2_p47bc"]
 [ext_resource type="PackedScene" uid="uid://y8av8bqvegr8" path="res://scenes/staff.tscn" id="3_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://dh60tdtrgj7mm" path="res://scenes/blinker.tscn" id="4_lvxji"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1jxqw"]
 atlas = ExtResource("2_onrkg")
@@ -35,6 +37,22 @@ region = Rect2(128, 448, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bwjto"]
 atlas = ExtResource("2_onrkg")
 region = Rect2(192, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75vfm"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(384, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0owmy"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(384, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qek5x"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(384, 128, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n7ghd"]
 animations = [{
@@ -71,31 +89,46 @@ animations = [{
 "loop": true,
 "name": &"right",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p47bc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75vfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0owmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qek5x")
+}],
+"loop": true,
+"name": &"stun",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nvl01"]
 radius = 3.9936
 height = 15.987
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
-radius = 5.0
-height = 22.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p47bc"]
+radius = 4.0
+height = 20.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["CanBlink"]]
 script = ExtResource("1_sweqy")
+whiten_material = ExtResource("2_p47bc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0.5, 0.5)
+position = Vector2(2, -1)
 scale = Vector2(0.484375, 0.484375)
 sprite_frames = SubResource("SpriteFrames_n7ghd")
-animation = &"left"
-frame_progress = 0.783063
+animation = &"stun"
+frame = 1
+frame_progress = 0.80485
 
-[node name="Hurtbox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-visible = false
-position = Vector2(0, -1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 0.00632393
 shape = SubResource("CapsuleShape2D_nvl01")
 
@@ -110,3 +143,13 @@ position = Vector2(3, -5.96046e-08)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_qhqgy")
+
+[node name="hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource("CapsuleShape2D_p47bc")
+debug_color = Color(0.901318, 0.000160757, 0.759867, 0.42)
+
+[node name="blinker" parent="." instance=ExtResource("4_lvxji")]
+
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hitbox_area_entered"]
