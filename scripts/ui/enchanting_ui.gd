@@ -1,7 +1,9 @@
 extends Control
 
+signal apply_enchantment
+
 var spell_panels: Array[Panel] = []
-var rng = RandomNumberGenerator.new()
+# var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	hide()
@@ -15,12 +17,18 @@ func _on_enchant_manager_open_menu(
 	# Generate random enchantments
 	for spell_panel in spell_panels:
 		# random enchantable (Player, weapon1, weapon2, ...)
-		var rand_num = rng.randf_range(0, enchantables.size())
+		var rand_able = randi() % enchantables.size() # rng.randf_range(0, enchantables.size())
 		
-		var size = enchantments.size()
-		var random_key = enchantments.keys()[randi() % size]
+		var random_key = enchantments.keys()[randi() % enchantments.size()]
 		var random_enchant = enchantments[random_key]
 		
-		spell_panel.set_enchant(enchantables[rand_num], random_enchant)
+		spell_panel.set_enchant(enchantables[rand_able], random_enchant)
 		
 	show()
+
+
+func _on_enchant_selected(enchantable, enchantment) -> void:
+	print("Selected {enchantable_name}".format(enchantable))
+	# TODO: apply enchantment to player or weapon
+	apply_enchantment.emit() 
+	hide()
