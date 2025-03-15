@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var target1 = $"../Player"
-@onready var target2 = $"../Goose"
+@onready var target2 = $"../Player"
 var target: Node2D = null
 var speed = 150
 
