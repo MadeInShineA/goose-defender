@@ -15,9 +15,9 @@ signal died
 var speed = 150
 var target: CharacterBody2D
 
-
 func  _ready() -> void:
 	var player: Player = get_tree().get_first_node_in_group("PlayerGroup")
+
 
 	target = player
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dh60tdtrgj7mm"]
 
-[ext_resource type="Script" uid="uid://cojvjgc6fadax" path="res://scenes/blinker/blinker.gd" id="1_b68aw"]
+[ext_resource type="Script" uid="uid://cojvjgc6fadax" path="res://scripts/blinker.gd" id="1_b68aw"]
 
 [node name="blinker" type="Node"]
 script = ExtResource("1_b68aw")

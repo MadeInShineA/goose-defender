@@ -1,4 +1,5 @@
 extends CharacterBody2D
+
 class_name Player
 
 const MAX_SPEED: int = 300
@@ -9,6 +10,7 @@ const FRICTION: int = 100000
 @onready var staff: Node2D = $staff
 @onready var right_staff_position: Node2D = $right_staff_position
 @onready var left_staff_position: Node2D = $left_staff_position
+
 @onready var hurtbox = $hurtbox
 @onready var blinker = $blinker
 
@@ -82,6 +84,3 @@ func take_damage(damage_amount):
 		await(get_tree().create_timer(whiten_duration)).timeout
 		whiten_material.set_shader_parameter("whiten", false)
 		blinker.start_blinking(self, blinking_duration)
-	
-	
-	
