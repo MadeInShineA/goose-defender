@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://btl5bple7viur"]
+
+[ext_resource type="Texture2D" uid="uid://33753ss22kl4" path="res://icon.svg" id="1_4up3s"]
+[ext_resource type="Script" uid="uid://b8570bn4id6o1" path="res://scripts/ui/spell_upgrade.gd" id="1_aqu4a"]
+[ext_resource type="Script" uid="uid://os18piyqrch3" path="res://scripts/ui/button.gd" id="2_4hijs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aqu4a"]
+
+[node name="SpellUpgrade" type="Panel"]
+script = ExtResource("1_aqu4a")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -229.0
+offset_right = 144.0
+offset_bottom = 229.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aqu4a")
+script = ExtResource("2_4hijs")
+
+[node name="Name" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 35
+text = "spell name"
+horizontal_alignment = 1
+
+[node name="SpellIcon" type="TextureRect" parent="Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -95.0
+offset_right = 95.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4up3s")
+
+[node name="Description" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -49.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 35
+text = "description"
+horizontal_alignment = 1
+vertical_alignment = 1
