@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://i2ee1kyoasqm"]
+
+[ext_resource type="Script" uid="uid://lanscyxfaw13" path="res://scripts/weapons/weapon.gd" id="1_nl8gd"]
+[ext_resource type="PackedScene" uid="uid://bl04m3xnyc0iy" path="res://scenes/ice_projectile.tscn" id="2_nl8gd"]
+[ext_resource type="Texture2D" uid="uid://c8gy7icgnd1i8" path="res://sprites/staves/staff22.png" id="3_nl8gd"]
+
+[node name="IceStaff" type="Node2D"]
+script = ExtResource("1_nl8gd")
+projectile_scene = ExtResource("2_nl8gd")
+base_damage = 5.0
+base_attack_speed = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(11, 0)
+rotation = 2.34398
+texture = ExtResource("3_nl8gd")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(17, 0)
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

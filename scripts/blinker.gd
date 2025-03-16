@@ -1,5 +1,7 @@
 extends Node
 
+class_name Blinker
+
 @onready var blink_timer = $blinkerTimer
 @onready var duration_timer = $durationTimer
 var blink_object: Node2D
@@ -10,10 +12,8 @@ func start_blinking(object, duration):
 	duration_timer.start()
 	blink_timer.start()
 
-
 func _on_blinker_timer_timeout() -> void:
 	blink_object.visible = !blink_object.visible
-
 
 func _on_duration_timer_timeout() -> void:
 	blink_timer.stop()
