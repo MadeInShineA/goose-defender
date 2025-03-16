@@ -9,8 +9,8 @@ signal health_changed
 @export var MAX_LIFE: int = 10
 
 var animated_sprite: AnimatedSprite2D
+var wave_over: bool = true
 var life: int = MAX_LIFE
-var wave_over: bool = false
 
 func _ready() -> void:
 	animated_sprite = get_node("AnimatedSprite2D") as AnimatedSprite2D
@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 		animated_sprite.play("wave_over")
 	else:
 		animated_sprite.play("idle")
-		
+
 func take_damage(damage_amount):
 	life -= damage_amount
 	if life <= 0:

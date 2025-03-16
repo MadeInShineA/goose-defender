@@ -1,8 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://dbja2a27cqj1y"]
+[gd_scene load_steps=26 format=3 uid="uid://dbja2a27cqj1y"]
 
 [ext_resource type="Script" uid="uid://cykt658d0r06b" path="res://scripts/goose.gd" id="1_g7ad0"]
 [ext_resource type="Texture2D" uid="uid://d3tw8kw13ps14" path="res://sprites/goose/Idle (64x64)-sheet.png" id="1_wo8sg"]
 [ext_resource type="Texture2D" uid="uid://deo8sflhjqxhb" path="res://sprites/goose/Dashup (64x64)-sheet.png" id="2_wf0t2"]
+[ext_resource type="Texture2D" uid="uid://cy87rgaqasy3w" path="res://sprites/healthbar/standard-empty-1.png" id="4_oe8yf"]
+[ext_resource type="Texture2D" uid="uid://beag32ac54wu6" path="res://sprites/healthbar/standard-full-1.png" id="5_ruu4t"]
+[ext_resource type="Script" uid="uid://bwrcoocbcae80" path="res://scripts/texture_progress_bar.gd" id="6_j6ked"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wf0t2"]
 atlas = ExtResource("1_wo8sg")
@@ -136,11 +139,22 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wf0t2"]
-radius = 20.025
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g7ad0"]
+radius = 15.0
+height = 34.0
 
 [node name="Goose" type="Node2D"]
 script = ExtResource("1_g7ad0")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -15.0
+offset_top = -24.0
+offset_right = 17.0
+offset_bottom = -16.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_oe8yf")
+texture_progress = ExtResource("5_ruu4t")
+script = ExtResource("6_j6ked")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7twfp")
@@ -150,6 +164,6 @@ frame_progress = 0.00286092
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_wf0t2")
+shape = SubResource("CapsuleShape2D_g7ad0")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

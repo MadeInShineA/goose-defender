@@ -1,6 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://oqnnuvygfqck"]
+[gd_scene load_steps=19 format=3 uid="uid://oqnnuvygfqck"]
+
 
 [ext_resource type="PackedScene" uid="uid://0ivogf4nn6u6" path="res://scenes/player.tscn" id="1_85g3d"]
+[ext_resource type="Script" uid="uid://bhbcqs4a64oov" path="res://scripts/main.gd" id="1_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://8q3eg1pd6q54" path="res://scenes/map.tscn" id="1_trceg"]
 [ext_resource type="PackedScene" uid="uid://dv4fdij1ccgy4" path="res://scenes/enchanting_ui.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://dbja2a27cqj1y" path="res://scenes/goose.tscn" id="2_choun"]
@@ -12,10 +14,12 @@
 [ext_resource type="Shader" uid="uid://bcp4ueopqumyn" path="res://resources/hit-shader.gdshader" id="7_a8y0u"]
 [ext_resource type="Script" uid="uid://do4vr3n6kktx5" path="res://scripts/waves/enemy_sequences.gd" id="7_muem4"]
 [ext_resource type="Material" uid="uid://d15ctwuk0j6ql" path="res://resources/blur.tres" id="7_ya4ey"]
-[ext_resource type="PackedScene" uid="uid://ghue8q3t70uy" path="res://scenes/enemy.tscn" id="8_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://babloip0iqolv" path="res://scenes/pause_menu.tscn" id="9_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://btx548onk480a" path="res://scenes/game_over.tscn" id="10_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://eweb5degwsuu" path="res://scenes/win_screen.tscn" id="11_dp3eg"]
 [ext_resource type="Resource" uid="uid://cbjvg8n70ve27" path="res://resources/enchantments/attack_speed_enchantment.tres" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://pwcdgcptf1p6" path="res://scenes/wave_handler.tscn" id="13_trceg"]
+[ext_resource type="PackedScene" uid="uid://xkiw1soi4jnq" path="res://scenes/mini_map.tscn" id="15_jkv2x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trceg"]
 resource_local_to_scene = true
@@ -43,6 +47,7 @@ enemy_sequences = Array[ExtResource("7_muem4")]([SubResource("Resource_muem4"), 
 metadata/_custom_type_script = "uid://bvocwdyc37qxq"
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_jbj1t")
 
 [node name="map" parent="." instance=ExtResource("1_trceg")]
 position = Vector2(0, 7)
@@ -113,6 +118,13 @@ size_flags_vertical = 4
 process_mode = 3
 visible = false
 
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("9_a8y0u")]
+process_mode = 3
+visible = false
+
+[node name="WinScreen" parent="CanvasLayer" instance=ExtResource("11_dp3eg")]
+visible = false
+
 [node name="EnchantmentManager" parent="." instance=ExtResource("3_sugp2")]
 visible = false
 enchantments = Dictionary[String, ExtResource("3_tefeu")]({
@@ -124,4 +136,5 @@ enchantments = Dictionary[String, ExtResource("3_tefeu")]({
 [connection signal="goose_died" from="Goose" to="CanvasLayer/GameOver" method="_on_goose_died"]
 [connection signal="goose_interacted_with" from="Goose" to="EnchantmentManager" method="_on_goose_interacted_with"]
 [connection signal="end_of_wave" from="WaveHandler" to="Goose" method="_on_end_of_wave"]
+[node name="MiniMap" parent="." instance=ExtResource("15_jkv2x")]
 [connection signal="open_menu" from="EnchantmentManager" to="CanvasLayer/Enchanting" method="_on_enchant_manager_open_menu"]

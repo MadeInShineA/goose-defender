@@ -1,0 +1,73 @@
+[gd_scene load_steps=13 format=3 uid="uid://bgyvirgoug1q4"]
+
+[ext_resource type="Script" uid="uid://d0hh6ye31nlyb" path="res://scripts/projectile.gd" id="1_amklp"]
+[ext_resource type="Texture2D" uid="uid://dmvkj88v2n82m" path="res://sprites/Tornado/006.png" id="2_4xyc6"]
+[ext_resource type="Texture2D" uid="uid://dhiutxc0ndc2l" path="res://sprites/Tornado/007.png" id="3_6a2fa"]
+[ext_resource type="Texture2D" uid="uid://on38yv7pjeer" path="res://sprites/Tornado/008.png" id="4_3j2vm"]
+[ext_resource type="Texture2D" uid="uid://c5xy22751f4ce" path="res://sprites/Tornado/009.png" id="5_i2fht"]
+[ext_resource type="Texture2D" uid="uid://ch0rwfnufk2dw" path="res://sprites/Tornado/001.png" id="6_68oga"]
+[ext_resource type="Texture2D" uid="uid://2t68j2ilp3w8" path="res://sprites/Tornado/002.png" id="7_eiwk6"]
+[ext_resource type="Texture2D" uid="uid://dupgyunarx2ph" path="res://sprites/Tornado/003.png" id="8_lwxr7"]
+[ext_resource type="Texture2D" uid="uid://d04xr3lshw4fu" path="res://sprites/Tornado/004.png" id="9_rl4q5"]
+[ext_resource type="Texture2D" uid="uid://dosxk5rmj40n5" path="res://sprites/Tornado/005.png" id="10_u2puf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mtkt8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4xyc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6a2fa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j2vm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i2fht")
+}],
+"loop": false,
+"name": &"hit_animation",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_68oga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_eiwk6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lwxr7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rl4q5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_u2puf")
+}],
+"loop": true,
+"name": &"travel_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_72u2i"]
+height = 22.0
+
+[node name="Projectile" type="Area2D" groups=["IsProjectile"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_amklp")
+SPEED = 500
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5, 0)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_mtkt8")
+animation = &"hit_animation"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 2)
+shape = SubResource("CapsuleShape2D_72u2i")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

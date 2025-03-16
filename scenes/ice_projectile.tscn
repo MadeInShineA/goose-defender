@@ -1,17 +1,58 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl04m3xnyc0iy"]
+[gd_scene load_steps=14 format=3 uid="uid://bl04m3xnyc0iy"]
 
 [ext_resource type="Script" uid="uid://d0hh6ye31nlyb" path="res://scripts/projectile.gd" id="1_2rpqc"]
-[ext_resource type="Texture2D" uid="uid://cff7182xbuex0" path="res://sprites/staves/orb3.png" id="2_3qb3v"]
+[ext_resource type="Texture2D" uid="uid://dxyx7etu5xa8u" path="res://sprites/Water/006.png" id="2_0k7j5"]
+[ext_resource type="Texture2D" uid="uid://wuxw343rey0p" path="res://sprites/Water/007.png" id="3_18e0n"]
+[ext_resource type="Texture2D" uid="uid://djqwgcqswefb8" path="res://sprites/Water/008.png" id="4_lwj24"]
+[ext_resource type="Texture2D" uid="uid://dp2p3fuvwvx1n" path="res://sprites/Water/009.png" id="5_35hdy"]
+[ext_resource type="Texture2D" uid="uid://c3s7mu7jbgj77" path="res://sprites/Water/010.png" id="6_240dx"]
+[ext_resource type="Texture2D" uid="uid://ceoo7etgnhs8q" path="res://sprites/Water/001.png" id="7_ujdbo"]
+[ext_resource type="Texture2D" uid="uid://b3tggjre3axa2" path="res://sprites/Water/002.png" id="8_uedn7"]
+[ext_resource type="Texture2D" uid="uid://c1fydbid66cb" path="res://sprites/Water/003.png" id="9_cfi54"]
+[ext_resource type="Texture2D" uid="uid://vnca5gj52ce2" path="res://sprites/Water/004.png" id="10_8sbqp"]
+[ext_resource type="Texture2D" uid="uid://bjpvem3unohwt" path="res://sprites/Water/005.png" id="11_56lua"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1umjp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_3qb3v")
+"texture": ExtResource("2_0k7j5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_18e0n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lwj24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_35hdy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_240dx")
+}],
+"loop": false,
+"name": &"hit_animation",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ujdbo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_uedn7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cfi54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8sbqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_56lua")
 }],
 "loop": true,
-"name": &"default",
-"speed": 10.0
+"name": &"travel_animation",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tncby"]
@@ -23,10 +64,13 @@ script = ExtResource("1_2rpqc")
 SPEED = 500
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-9, 0)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_1umjp")
-frame_progress = 0.210131
+animation = &"hit_animation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tncby")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
