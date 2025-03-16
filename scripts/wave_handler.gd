@@ -9,11 +9,12 @@ signal end_of_wave
 
 @export var waves: Array[Wave]
 
-var current_wave = 0
-var last_wave = 4
+var current_wave: int = 0
+var last_wave: int
 
 func _ready() -> void:
 	wave_timer.wait_time = 20
+	last_wave = waves.size()
 	
 func start_wave(wave: Wave):
 	for seq in wave.enemy_sequences:
@@ -40,6 +41,11 @@ func handle_enemy_death():
 		dead_enemies = 0
 		end_of_wave.emit()
 		current_wave += 1
+		if current_wave == last_wave:
+			# TODO: Go to WIN PAGE
+			print("VICTORY")
+			wave_timer.queue_free()
+			return
 		wave_timer.start()
 
 func get_random_spawner() -> Vector2:	
@@ -53,7 +59,4 @@ func _on_enemy_died() -> void:
 
 func _on_wave_start() -> void:
 	print("Starting wave number ", current_wave)
-	if current_wave == last_wave:
-		# TODO: Go to WIN PAGE
-		return
 	start_wave(waves[current_wave])

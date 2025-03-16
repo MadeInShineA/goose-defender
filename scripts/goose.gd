@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Goose
+
 signal goose_interacted_with
 signal goose_died
 signal health_changed
