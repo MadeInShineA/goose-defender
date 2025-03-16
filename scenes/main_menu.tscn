@@ -1,15 +1,15 @@
 [gd_scene load_steps=30 format=3 uid="uid://c7cvqbuu00lkh"]
 
 [ext_resource type="Script" uid="uid://bvy7yddty2y4r" path="res://scripts/main_menu.gd" id="1_bqqt6"]
-[ext_resource type="Texture2D" uid="uid://33753ss22kl4" path="res://icon.svg" id="1_l6cm7"]
 [ext_resource type="FontFile" uid="uid://f4efyoo1wgd6" path="res://resources/GrapeSoda.ttf" id="2_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://dp2jkcphqigtl" path="res://menu.png" id="2_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://deo8sflhjqxhb" path="res://sprites/goose/Dashup (64x64)-sheet.png" id="4_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://d3tw8kw13ps14" path="res://sprites/goose/Idle (64x64)-sheet.png" id="5_oa1go"]
 [ext_resource type="Script" uid="uid://b2co7aov8yqn6" path="res://scripts/ui/idle_goose.gd" id="6_tbmy8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekxnf"]
-texture = ExtResource("1_l6cm7")
-modulate_color = Color(0.429416, 0.429416, 0.429416, 1)
+texture = ExtResource("2_rtw2f")
+modulate_color = Color(0.668629, 0.668629, 0.668629, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rvgkb"]
 atlas = ExtResource("4_rtw2f")
