@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://oqnnuvygfqck"]
+[gd_scene load_steps=19 format=3 uid="uid://oqnnuvygfqck"]
 
 [ext_resource type="PackedScene" uid="uid://0ivogf4nn6u6" path="res://scenes/player.tscn" id="1_85g3d"]
 [ext_resource type="Script" uid="uid://bhbcqs4a64oov" path="res://scripts/main.gd" id="1_jbj1t"]
@@ -13,6 +13,7 @@
 [ext_resource type="Material" uid="uid://d15ctwuk0j6ql" path="res://resources/blur.tres" id="7_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://babloip0iqolv" path="res://scenes/pause_menu.tscn" id="9_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://btx548onk480a" path="res://scenes/game_over.tscn" id="10_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://eweb5degwsuu" path="res://scenes/win_screen.tscn" id="11_dp3eg"]
 [ext_resource type="Resource" uid="uid://cbjvg8n70ve27" path="res://resources/enchantments/attack_speed_enchantment.tres" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://pwcdgcptf1p6" path="res://scenes/wave_handler.tscn" id="13_trceg"]
 [ext_resource type="PackedScene" uid="uid://xkiw1soi4jnq" path="res://scenes/mini_map.tscn" id="15_jkv2x"]
@@ -73,6 +74,10 @@ visible = false
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("9_a8y0u")]
 process_mode = 3
+visible = false
+
+[node name="WinScreen" parent="CanvasLayer" instance=ExtResource("11_dp3eg")]
+visible = false
 
 [node name="EnchantmentManager" parent="." instance=ExtResource("3_sugp2")]
 visible = false

@@ -43,7 +43,6 @@ position_smoothing_speed = 12.0
 
 [node name="PlayerMarker" type="ColorRect" parent="Ui/MarginContainer/SubViewportContainer/SubViewport"]
 z_index = 15
-anchors_preset = -1
 offset_right = 75.0
 offset_bottom = 75.0
 mouse_filter = 2
