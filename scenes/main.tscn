@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://oqnnuvygfqck"]
+[gd_scene load_steps=17 format=3 uid="uid://oqnnuvygfqck"]
 
 [ext_resource type="PackedScene" uid="uid://0ivogf4nn6u6" path="res://scenes/player.tscn" id="1_85g3d"]
 [ext_resource type="PackedScene" uid="uid://l6i72lifskfg" path="res://scenes/weapon.tscn" id="1_o5qli"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ghue8q3t70uy" path="res://scenes/enemy.tscn" id="6_trceg"]
 [ext_resource type="Shader" uid="uid://bcp4ueopqumyn" path="res://resources/hit-shader.gdshader" id="7_a8y0u"]
 [ext_resource type="Material" uid="uid://d15ctwuk0j6ql" path="res://resources/blur.tres" id="7_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://btx548onk480a" path="res://scenes/game_over.tscn" id="10_a8y0u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trceg"]
 resource_local_to_scene = true
@@ -71,6 +72,9 @@ anchor_bottom = 0.5
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="GameOver" parent="CanvasLayer" instance=ExtResource("10_a8y0u")]
+process_mode = 3
+
 [node name="EnchantManager" parent="." node_paths=PackedStringArray("weapons", "enchant_ui") instance=ExtResource("3_sugp2")]
 weapons = [NodePath("../Staff1"), NodePath("../Staff2")]
 enchantments = Dictionary[String, ExtResource("3_tefeu")]({
@@ -79,5 +83,6 @@ enchantments = Dictionary[String, ExtResource("3_tefeu")]({
 })
 enchant_ui = NodePath("../CanvasLayer/Enchanting")
 
+[connection signal="goose_died" from="Goose" to="CanvasLayer/GameOver" method="_on_goose_died"]
 [connection signal="goose_interacted_with" from="Goose" to="EnchantManager" method="_on_goose_interacted_with"]
 [connection signal="open_menu" from="EnchantManager" to="CanvasLayer/Enchanting" method="_on_enchant_manager_open_menu"]
