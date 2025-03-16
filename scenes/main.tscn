@@ -25,13 +25,11 @@ shader_parameter/whiten = false
 [node name="map" parent="." instance=ExtResource("1_trceg")]
 position = Vector2(0, 7)
 
-[node name="Player" parent="map" instance=ExtResource("1_85g3d")]
+[node name="Player2" parent="map" instance=ExtResource("1_85g3d")]
 position = Vector2(1136, 800)
 whiten_material = SubResource("ShaderMaterial_trceg")
 
-[node name="Camera2D" type="Camera2D" parent="map/Player"]
-position = Vector2(0.199978, -0.400005)
-scale = Vector2(0.2, 0.2)
+[node name="Camera2D" type="Camera2D" parent="map/Player2"]
 zoom = Vector2(3, 4)
 limit_left = 576
 limit_top = -32

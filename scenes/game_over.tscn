@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://btx548onk480a"]
+[gd_scene load_steps=21 format=3 uid="uid://btx548onk480a"]
 
 [ext_resource type="Script" uid="uid://0xaspsgrd5r7" path="res://scripts/game_over.gd" id="1_wqhvx"]
 [ext_resource type="FontFile" uid="uid://f4efyoo1wgd6" path="res://resources/GrapeSoda.ttf" id="1_xeevv"]
+[ext_resource type="Texture2D" uid="uid://deo8sflhjqxhb" path="res://sprites/goose/Dashup (64x64)-sheet.png" id="3_7m3ot"]
+[ext_resource type="Texture2D" uid="uid://cd3or7cxgwqf6" path="res://sprites/goose/Turdblast.png" id="4_7m3ot"]
+[ext_resource type="Script" uid="uid://bei8dvqew8sfp" path="res://scripts/ui/poop_goose.gd" id="5_7m3ot"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xeevv"]
 
@@ -46,6 +49,75 @@ corner_radius_bottom_left = 16
 shadow_color = Color(0, 0, 0, 0.203922)
 shadow_size = 5
 shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvgkb"]
+atlas = ExtResource("3_7m3ot")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3by28"]
+atlas = ExtResource("3_7m3ot")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm0fb"]
+atlas = ExtResource("3_7m3ot")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsqi3"]
+atlas = ExtResource("3_7m3ot")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iiexn"]
+atlas = ExtResource("3_7m3ot")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3hpu"]
+atlas = ExtResource("4_7m3ot")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irg28"]
+atlas = ExtResource("4_7m3ot")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jtsn"]
+atlas = ExtResource("4_7m3ot")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_56v3a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvgkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3by28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rm0fb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsqi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iiexn")
+}],
+"loop": true,
+"name": &"dash_up",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3hpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irg28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jtsn")
+}],
+"loop": true,
+"name": &"poop",
+"speed": 5.0
+}]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -127,6 +199,14 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_v3hpu")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_tbwuq")
 theme_override_styles/normal = SubResource("StyleBoxFlat_tbwuq")
 text = "Go back to the menu"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer"]
+position = Vector2(975.5, 262.5)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_56v3a")
+animation = &"poop"
+frame_progress = 0.688657
+script = ExtResource("5_7m3ot")
 
 [connection signal="pressed" from="VBoxContainer/ReplayButton" to="." method="_on_replay_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://0ivogf4nn6u6"]
+[gd_scene load_steps=28 format=3 uid="uid://0ivogf4nn6u6"]
 
 [ext_resource type="Script" uid="uid://dph8r1fa6o7oi" path="res://scripts/player.gd" id="1_sweqy"]
 [ext_resource type="Texture2D" uid="uid://b6rlw71s26aas" path="res://sprites/character/char_a_p1_0bas_humn_v01.png" id="2_onrkg"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://i2ee1kyoasqm" path="res://scenes/ice_staff.tscn" id="3_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://dh60tdtrgj7mm" path="res://scenes/blinker.tscn" id="4_lvxji"]
 [ext_resource type="PackedScene" uid="uid://y8av8bqvegr8" path="res://scenes/fire_staff.tscn" id="4_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://1p30q6abfb54" path="res://scenes/earth_staff.tscn" id="5_y4r1p"]
+[ext_resource type="PackedScene" uid="uid://daw41tjn0tehi" path="res://scenes/earth_projectile.tscn" id="6_d2wvv"]
+[ext_resource type="PackedScene" uid="uid://dsa80onrstj7t" path="res://scenes/wind_staff.tscn" id="7_3v2ag"]
 [ext_resource type="Texture2D" uid="uid://cy87rgaqasy3w" path="res://sprites/healthbar/standard-empty-1.png" id="7_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://beag32ac54wu6" path="res://sprites/healthbar/standard-full-1.png" id="8_y4r1p"]
 [ext_resource type="Script" uid="uid://bwrcoocbcae80" path="res://scripts/texture_progress_bar.gd" id="9_d2wvv"]
@@ -131,6 +134,13 @@ enchantable_name = "Ice Staff"
 
 [node name="FireStaff" parent="Weapons" groups=["Enchantable"] instance=ExtResource("4_tuyoq")]
 enchantable_name = "Fire Staff"
+
+[node name="earth_staff" parent="Weapons" groups=["Enchantable"] instance=ExtResource("5_y4r1p")]
+projectile_scene = ExtResource("6_d2wvv")
+base_attack_speed = 0.8
+enchantable_name = "Earth Staff"
+
+[node name="WindStaff" parent="Weapons" instance=ExtResource("7_3v2ag")]
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 offset_left = -17.0

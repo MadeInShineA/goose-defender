@@ -1,6 +1,99 @@
-[gd_scene load_steps=7 format=3 uid="uid://babloip0iqolv"]
+[gd_scene load_steps=22 format=3 uid="uid://babloip0iqolv"]
 
 [ext_resource type="Script" uid="uid://bjdnhd434ae57" path="res://scripts/pause_menu.gd" id="1_n87rw"]
+[ext_resource type="Texture2D" uid="uid://deo8sflhjqxhb" path="res://sprites/goose/Dashup (64x64)-sheet.png" id="2_5d2l8"]
+[ext_resource type="Texture2D" uid="uid://kq26cxqu7xx7" path="res://sprites/goose/Lay(64x64).png" id="3_7l7mv"]
+[ext_resource type="Script" uid="uid://cdrbicyx8rnm2" path="res://scripts/ui/lay_goose.gd" id="4_5d2l8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvgkb"]
+atlas = ExtResource("2_5d2l8")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3by28"]
+atlas = ExtResource("2_5d2l8")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm0fb"]
+atlas = ExtResource("2_5d2l8")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsqi3"]
+atlas = ExtResource("2_5d2l8")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iiexn"]
+atlas = ExtResource("2_5d2l8")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1s2dm"]
+atlas = ExtResource("3_7l7mv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88e76"]
+atlas = ExtResource("3_7l7mv")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knqa7"]
+atlas = ExtResource("3_7l7mv")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71k7c"]
+atlas = ExtResource("3_7l7mv")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmnsq"]
+atlas = ExtResource("3_7l7mv")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofnjo"]
+atlas = ExtResource("3_7l7mv")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1rgno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvgkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3by28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rm0fb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsqi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iiexn")
+}],
+"loop": true,
+"name": &"dash_up",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1s2dm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88e76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knqa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71k7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmnsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofnjo")
+}],
+"loop": true,
+"name": &"lay",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_myx47"]
 
@@ -67,6 +160,14 @@ offset_bottom = 204.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer"]
+position = Vector2(388.5, -152.5)
+scale = Vector2(10, 9.12)
+sprite_frames = SubResource("SpriteFrames_1rgno")
+animation = &"lay"
+frame_progress = 0.78939
+script = ExtResource("4_5d2l8")
 
 [node name="ResumeButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2

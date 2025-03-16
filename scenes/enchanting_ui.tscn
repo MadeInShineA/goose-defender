@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b3k306rhy8sv2" path="res://scripts/ui/enchanting_ui.gd" id="1_01r1k"]
 [ext_resource type="PackedScene" uid="uid://btl5bple7viur" path="res://scenes/spell_enchant.tscn" id="1_cltfj"]
 [ext_resource type="Texture2D" uid="uid://deo8sflhjqxhb" path="res://sprites/goose/Dashup (64x64)-sheet.png" id="3_cbudh"]
-[ext_resource type="Script" uid="uid://b2co7aov8yqn6" path="res://scripts/ui/animated_goose_ui.gd" id="4_3tir7"]
+[ext_resource type="Script" uid="uid://dxdjy01hcs6ju" path="res://scripts/ui/dash-goose.gd" id="4_3tir7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rvgkb"]
 atlas = ExtResource("3_cbudh")
