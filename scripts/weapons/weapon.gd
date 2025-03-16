@@ -11,14 +11,14 @@ class_name Weapon
 @export var base_attack_speed: float
 @export var element: Element
 
-var current_damage: float = base_damage
-var current_attack_speed: float = base_attack_speed
+@onready var current_damage: float = base_damage
+@onready var current_attack_speed: float = base_attack_speed
 
 var can_attack: bool = true
 
 func _ready():
 	enchantment_texture = sprite.texture
-	attack_timer.wait_time = current_attack_speed
+	attack_timer.wait_time = 1.0 / current_attack_speed
 	attack_timer.one_shot = true
 	attack_timer.start()
 

@@ -10,7 +10,7 @@ const FRICTION: int = 100000
 @export var whiten_material: ShaderMaterial
 
 @onready var animation_player: AnimatedSprite2D = $AnimatedSprite2D
-@onready var weapons: Array[Node2D] = []
+@onready var weapons: Array[Weapon] = []
 @onready var current_weapon: Weapon
 @onready var hurtbox = $hurtbox
 @onready var blinker = $blinker
@@ -27,9 +27,14 @@ var weapon_index: int = 0
 func _ready() -> void:
 	for weapon in $Weapons.get_children():
 		print(weapon.name)
+		weapon.set_process(false)
+		weapon.hide()
 		weapons.append(weapon)
 	
-	current_weapon = weapons[0]
+	# Select random weapon on start
+	print(weapons)
+	current_weapon = weapons[randi() % weapons.size()]
+	show_weapon(current_weapon)
 
 func _process(delta: float) -> void:
 	if is_stuned:
@@ -73,16 +78,40 @@ func handle_stun(stun_duration: float):
 	life = MAX_LIFE
 	
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.is_pressed():
-			# next weapon
-			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				weapon_index += 1
-				
-				# call the zoom function
-			# prev weapon
-			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				weapon_index -= 1
+	if event is InputEventMouseButton and event.is_pressed():
+		var unlocked_weapons = weapons.filter(func(w): return w.is_unlocked)
+		
+		# Prevent invalid access
+		if unlocked_weapons.is_empty():
+			print("No unlocked weapons!")  # Debugging
+			return  # Exit early
+
+		# Find the current weapon in unlocked list
+		var current_weapon = weapons[weapon_index] if weapon_index < weapons.size() else null
+		var current_unlocked_index = unlocked_weapons.find(current_weapon)
+
+		# Default to first unlocked weapon if the current one isn't found
+		if current_unlocked_index == -1:
+			current_unlocked_index = 0  
+
+		# Change index based on scroll direction
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			current_unlocked_index += 1
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			current_unlocked_index -= 1
+		else:
+			return
+		# Wrap around
+		current_unlocked_index = posmod(current_unlocked_index, unlocked_weapons.size())
+
+		# Get new weapon index in full weapon list
+		weapon_index = weapons.find(unlocked_weapons[current_unlocked_index])
+		
+		# Get new weapon index in full weapon listsapon_index])
+		hide_weapon(current_weapon)
+		var next_weapon = weapons[weapon_index]
+		current_weapon = next_weapon
+		show_weapon(current_weapon)
 	
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	pass
@@ -99,3 +128,13 @@ func take_damage(damage_amount):
 		await(get_tree().create_timer(whiten_duration)).timeout
 		whiten_material.set_shader_parameter("whiten", false)
 		blinker.start_blinking(self, blinking_duration)
+
+func show_weapon(weapon):
+	weapon.set_process(true)
+	weapon.show()
+	if not weapon.is_unlocked:
+		weapon.is_unlocked = true
+	
+func hide_weapon(weapon):
+	weapon.set_process(false)
+	weapon.hide()

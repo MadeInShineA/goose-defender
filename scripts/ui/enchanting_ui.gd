@@ -12,6 +12,7 @@ func _ready() -> void:
 	blur.hide()
 	for spell_panel in get_tree().get_nodes_in_group("SpellPanel"):
 		spell_panels.append(spell_panel as Panel)
+		
 
 func _on_enchant_manager_open_menu(
 	enchantables: Array[Enchantable],
@@ -19,15 +20,15 @@ func _on_enchant_manager_open_menu(
 		
 	# Generate random enchantments
 	for spell_panel in spell_panels:
-		# random enchantable (Player, weapon1, weapon2, ...)
+		# random enchantable (weapon1, weapon2, ...)
 		var probs: Array[float] = []
 		
 		# Assign weights
 		for able in enchantables:
 			if not able.is_unlocked:
-				probs.append(0.05)
+				probs.append(0.1)
 			else:
-				probs.append(95.5)
+				probs.append(0.9)
 		
 		# Compute cumulative sum
 		var cumulative_probs: Array[float] = []
@@ -44,9 +45,6 @@ func _on_enchant_manager_open_menu(
 			if rand_value <= cumulative_probs[i]:
 				rand_able = i  # Return the selected index
 				break
-				
-		print(enchantables)
-		print(enchantments)
 		
 		var random_key = enchantments.keys()[randi() % enchantments.size()]
 		var random_enchant = enchantments[random_key]
@@ -60,8 +58,14 @@ func _on_enchant_manager_open_menu(
 func _on_enchant_selected(enchantable, enchantment) -> void:
 	print("Selected {enchantable_name}".format(enchantable))
 	# TODO: apply enchantment to player or weapon
+	if (not enchantable.is_unlocked):
+		print("New weapon unlocked")
+		enchantable.is_unlocked = true
+		
+	enchantable.apply_enchantment(enchantment)
+		
 	apply_enchantment.emit()
 	get_tree().paused = false
-	
+		
 	blur.hide()
 	hide()
