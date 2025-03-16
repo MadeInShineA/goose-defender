@@ -1,0 +1,75 @@
+[gd_scene load_steps=14 format=3 uid="uid://daw41tjn0tehi"]
+
+[ext_resource type="Script" uid="uid://d0hh6ye31nlyb" path="res://scripts/projectile.gd" id="1_jkrqc"]
+[ext_resource type="Texture2D" uid="uid://pje7rnddknej" path="res://sprites/projectiles/Rocks/006.png" id="2_jkrqc"]
+[ext_resource type="Texture2D" uid="uid://dk81h1drxcxbg" path="res://sprites/projectiles/Rocks/007.png" id="3_baa43"]
+[ext_resource type="Texture2D" uid="uid://crv18p58i13te" path="res://sprites/projectiles/Rocks/008.png" id="4_qm3bu"]
+[ext_resource type="Texture2D" uid="uid://cc7tfdb2s0tx5" path="res://sprites/projectiles/Rocks/009.png" id="5_vtmkg"]
+[ext_resource type="Texture2D" uid="uid://dh2njdllsie4u" path="res://sprites/projectiles/Rocks/010.png" id="6_lidp7"]
+[ext_resource type="Texture2D" uid="uid://bty37ey1bc117" path="res://sprites/projectiles/Rocks/001.png" id="7_s7rr5"]
+[ext_resource type="Texture2D" uid="uid://drap568c78yi7" path="res://sprites/projectiles/Rocks/002.png" id="8_57rwp"]
+[ext_resource type="Texture2D" uid="uid://d2ol3fd6lpl8q" path="res://sprites/projectiles/Rocks/003.png" id="9_4qfbm"]
+[ext_resource type="Texture2D" uid="uid://gdnof43yptaj" path="res://sprites/projectiles/Rocks/004.png" id="10_52o7e"]
+[ext_resource type="Texture2D" uid="uid://dw8slg842josr" path="res://sprites/projectiles/Rocks/005.png" id="11_60kjo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jkrqc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jkrqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_baa43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qm3bu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vtmkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lidp7")
+}],
+"loop": false,
+"name": &"hit_animation",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_s7rr5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_57rwp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4qfbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_52o7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_60kjo")
+}],
+"loop": true,
+"name": &"travel_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_baa43"]
+size = Vector2(30, 15)
+
+[node name="Projectile" type="Area2D" groups=["IsProjectile"]]
+script = ExtResource("1_jkrqc")
+SPEED = 500
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5, -2)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_jkrqc")
+animation = &"travel_animation"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -1)
+shape = SubResource("RectangleShape2D_baa43")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

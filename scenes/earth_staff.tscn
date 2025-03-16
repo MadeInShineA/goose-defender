@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://lanscyxfaw13" path="res://scripts/weapons/weapon.gd" id="1_capws"]
 [ext_resource type="Texture2D" uid="uid://c78fta20so0tc" path="res://sprites/staves/staff4.png" id="2_6bvuc"]
-[ext_resource type="PackedScene" uid="uid://bl04m3xnyc0iy" path="res://scenes/ice_projectile.tscn" id="2_ovc4x"]
+[ext_resource type="PackedScene" uid="uid://daw41tjn0tehi" path="res://scenes/earth_projectile.tscn" id="2_ovc4x"]
 
-[node name="EarthStaff" type="Node2D"]
+[node name="EarthStaff" type="Node2D" groups=["Enchantable"]]
 script = ExtResource("1_capws")
 projectile_scene = ExtResource("2_ovc4x")
 base_damage = 7.0

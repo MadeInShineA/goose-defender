@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bl04m3xnyc0iy" path="res://scenes/ice_projectile.tscn" id="2_nl8gd"]
 [ext_resource type="Texture2D" uid="uid://c8gy7icgnd1i8" path="res://sprites/staves/staff22.png" id="3_nl8gd"]
 
-[node name="IceStaff" type="Node2D"]
+[node name="IceStaff" type="Node2D" groups=["Enchantable"]]
 script = ExtResource("1_nl8gd")
 projectile_scene = ExtResource("2_nl8gd")
 base_damage = 5.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://0ivogf4nn6u6"]
+[gd_scene load_steps=25 format=3 uid="uid://0ivogf4nn6u6"]
 
 [ext_resource type="Script" uid="uid://dph8r1fa6o7oi" path="res://scripts/player.gd" id="1_sweqy"]
 [ext_resource type="Texture2D" uid="uid://b6rlw71s26aas" path="res://sprites/character/char_a_p1_0bas_humn_v01.png" id="2_onrkg"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dh60tdtrgj7mm" path="res://scenes/blinker.tscn" id="4_lvxji"]
 [ext_resource type="PackedScene" uid="uid://y8av8bqvegr8" path="res://scenes/fire_staff.tscn" id="4_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://dp6te3cuna11n" path="res://scenes/earth_staff.tscn" id="5_fjrip"]
+[ext_resource type="PackedScene" uid="uid://c031wprce88hi" path="res://scenes/wind_staff.tscn" id="6_smehm"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_smehm"]
 
@@ -126,15 +127,17 @@ whiten_material = ExtResource("2_p47bc")
 
 [node name="Weapons" type="Node2D" parent="."]
 
-[node name="EarthStaff" parent="Weapons" groups=["Enchantable"] instance=ExtResource("5_fjrip")]
+[node name="EarthStaff" parent="Weapons" instance=ExtResource("5_fjrip")]
 enchantable_name = "Earth Staff"
 enchantment_texture = SubResource("ImageTexture_smehm")
 
-[node name="IceStaff" parent="Weapons" groups=["Enchantable"] instance=ExtResource("3_tuyoq")]
+[node name="IceStaff" parent="Weapons" instance=ExtResource("3_tuyoq")]
 enchantable_name = "Ice Staff"
 
 [node name="FireStaff" parent="Weapons" groups=["Enchantable"] instance=ExtResource("4_tuyoq")]
 enchantable_name = "Fire Staff"
+
+[node name="WindStaff" parent="Weapons" instance=ExtResource("6_smehm")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.484375, 0.484375)

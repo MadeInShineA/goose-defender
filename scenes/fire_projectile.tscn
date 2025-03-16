@@ -1,37 +1,62 @@
-[gd_scene load_steps=9 format=3 uid="uid://duo8yawgjwbj8"]
+[gd_scene load_steps=14 format=3 uid="uid://duo8yawgjwbj8"]
 
 [ext_resource type="Script" uid="uid://d0hh6ye31nlyb" path="res://scripts/projectile.gd" id="1_jxwu6"]
-[ext_resource type="Texture2D" uid="uid://chrciew14j4m2" path="res://sprites/fireball/FB500-1.png" id="2_w7nm8"]
-[ext_resource type="Texture2D" uid="uid://cxd3qevjwrcrk" path="res://sprites/fireball/FB500-2.png" id="3_6c2e5"]
-[ext_resource type="Texture2D" uid="uid://ctbrgyffc8gf1" path="res://sprites/fireball/FB500-3.png" id="4_pl1gp"]
-[ext_resource type="Texture2D" uid="uid://dit4lhoaq4cl8" path="res://sprites/fireball/FB500-4.png" id="5_ejmht"]
-[ext_resource type="Texture2D" uid="uid://bbefajfgspt0h" path="res://sprites/fireball/FB500-5.png" id="6_031o2"]
+[ext_resource type="Texture2D" uid="uid://cnn02d8c4ljh8" path="res://sprites/projectiles/Fire_Ball/006.png" id="2_6kxw3"]
+[ext_resource type="Texture2D" uid="uid://daliitw2jq080" path="res://sprites/projectiles/Fire_Ball/001.png" id="2_b1d1k"]
+[ext_resource type="Texture2D" uid="uid://b2uw1d0j5yeu" path="res://sprites/projectiles/Fire_Ball/002.png" id="3_0bf1d"]
+[ext_resource type="Texture2D" uid="uid://blcbvs7kxwicu" path="res://sprites/projectiles/Fire_Ball/007.png" id="3_45mql"]
+[ext_resource type="Texture2D" uid="uid://bijmdalt0tarq" path="res://sprites/projectiles/Fire_Ball/003.png" id="4_cqkuq"]
+[ext_resource type="Texture2D" uid="uid://b3bbnbeppa34d" path="res://sprites/projectiles/Fire_Ball/008.png" id="4_j54c5"]
+[ext_resource type="Texture2D" uid="uid://bssjrloh7d20l" path="res://sprites/projectiles/Fire_Ball/009.png" id="5_4eeq1"]
+[ext_resource type="Texture2D" uid="uid://dvf8f72sxuryh" path="res://sprites/projectiles/Fire_Ball/004.png" id="5_shu0c"]
+[ext_resource type="Texture2D" uid="uid://boag61bswbmhg" path="res://sprites/projectiles/Fire_Ball/010.png" id="6_kao7s"]
+[ext_resource type="Texture2D" uid="uid://b0nntgw2y8wqe" path="res://sprites/projectiles/Fire_Ball/005.png" id="6_oaxx5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1umjp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_w7nm8")
+"texture": ExtResource("2_6kxw3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_6c2e5")
+"texture": ExtResource("3_45mql")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_pl1gp")
+"texture": ExtResource("4_j54c5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_ejmht")
+"texture": ExtResource("5_4eeq1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_031o2")
+"texture": ExtResource("6_kao7s")
+}],
+"loop": false,
+"name": &"hit_animation",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b1d1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0bf1d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cqkuq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_shu0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_oaxx5")
 }],
 "loop": true,
-"name": &"default",
-"speed": 10.0
+"name": &"travel_animation",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tncby"]
-radius = 9.0
+radius = 22.0
 
 [node name="Projectile" type="Area2D" groups=["IsProjectile"]]
 scale = Vector2(0.5, 0.5)
@@ -39,11 +64,12 @@ script = ExtResource("1_jxwu6")
 SPEED = 500
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.05, 0.05)
+position = Vector2(-6, 2)
 sprite_frames = SubResource("SpriteFrames_1umjp")
-frame_progress = 0.210131
+animation = &"hit_animation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 0)
 shape = SubResource("CircleShape2D_tncby")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
