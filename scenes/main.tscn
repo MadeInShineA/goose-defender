@@ -22,15 +22,26 @@ shader_parameter/whiten = false
 [node name="Main" type="Node2D"]
 
 [node name="map" parent="." instance=ExtResource("1_trceg")]
+position = Vector2(0, 7)
 
-[node name="Player" parent="." instance=ExtResource("1_85g3d")]
-position = Vector2(372, 277)
-scale = Vector2(5, 5)
+[node name="Player2" parent="map" instance=ExtResource("1_85g3d")]
+position = Vector2(1136, 800)
 whiten_material = SubResource("ShaderMaterial_trceg")
 
-[node name="Goose" parent="." instance=ExtResource("2_choun")]
-position = Vector2(516, 282)
-scale = Vector2(2, 2)
+[node name="Camera2D" type="Camera2D" parent="map/Player2"]
+position = Vector2(0.199978, -0.400005)
+scale = Vector2(0.2, 0.2)
+zoom = Vector2(3, 4)
+limit_left = 576
+limit_top = -32
+limit_right = 1695
+limit_bottom = 1184
+
+[node name="Goose" parent="map" instance=ExtResource("2_choun")]
+position = Vector2(1137, 628)
+
+[node name="WaveHandler" parent="map" instance=ExtResource("13_trceg")]
+position = Vector2(0, -7)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -66,9 +77,6 @@ enchantments = Dictionary[String, ExtResource("3_tefeu")]({
 "Speed": ExtResource("4_o6xl0")
 })
 
-[node name="WaveHandler" parent="." instance=ExtResource("13_trceg")]
-position = Vector2(0, 0)
-
-[connection signal="goose_died" from="Goose" to="CanvasLayer/GameOver" method="_on_goose_died"]
-[connection signal="goose_interacted_with" from="Goose" to="EnchantmentManager" method="_on_goose_interacted_with"]
+[connection signal="goose_died" from="map/Goose" to="CanvasLayer/GameOver" method="_on_goose_died"]
+[connection signal="goose_interacted_with" from="map/Goose" to="EnchantmentManager" method="_on_goose_interacted_with"]
 [connection signal="open_menu" from="EnchantmentManager" to="CanvasLayer/Enchanting" method="_on_enchant_manager_open_menu"]

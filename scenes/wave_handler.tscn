@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cwojbanem0si6" path="res://scripts/wave_handler.gd" id="1_7bjdl"]
 
 [node name="WaveHandler" type="Node2D"]
-position = Vector2(530, 317)
+position = Vector2(6, -2)
 script = ExtResource("1_7bjdl")
 
 [node name="MobSpawner" type="Node2D" parent="." groups=["MobSpawner"]]
