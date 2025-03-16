@@ -36,6 +36,9 @@ func _ready() -> void:
 	current_weapon = weapons[randi() % weapons.size()]
 	show_weapon(current_weapon)
 
+func _ready():
+	add_to_group("PlayerGroup")
+
 func _process(delta: float) -> void:
 	if is_stuned:
 		return

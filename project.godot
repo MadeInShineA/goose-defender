@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="goose-defender"
-run/main_scene="uid://oqnnuvygfqck"
+run/main_scene="uid://c7cvqbuu00lkh"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -29,7 +29,9 @@ window/size/viewport_height=1080
 Enchantable="All enchantable nodes (Player and weapons)"
 CanBlink="Is a group of target that blink when hit"
 IsProjectile=""
-PlayerGroup=""
+PlayerGroup="This group is only for the player object"
+MobSpawner="This group serves for the different Mob spawners"
+EnemyGroup="This group represents the different enemies"
 
 [input]
 

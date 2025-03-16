@@ -11,6 +11,7 @@
 [ext_resource type="Shader" uid="uid://bcp4ueopqumyn" path="res://resources/hit-shader.gdshader" id="7_a8y0u"]
 [ext_resource type="Material" uid="uid://d15ctwuk0j6ql" path="res://resources/blur.tres" id="7_ya4ey"]
 [ext_resource type="Resource" uid="uid://cbjvg8n70ve27" path="res://resources/enchantments/attack_speed_enchantment.tres" id="11_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://btx548onk480a" path="res://scenes/game_over.tscn" id="10_a8y0u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trceg"]
 resource_local_to_scene = true
@@ -59,6 +60,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="EnchantmentManager" parent="." node_paths=PackedStringArray("enchant_ui") instance=ExtResource("3_sugp2")]
+[node name="GameOver" parent="CanvasLayer" instance=ExtResource("10_a8y0u")]
+process_mode = 3
+
 enchantments = Dictionary[String, ExtResource("3_tefeu")]({
 "Attack Speed Enchantment": ExtResource("11_ya4ey"),
 "Damage Enchantment": ExtResource("5_tipki"),
@@ -68,3 +72,4 @@ enchant_ui = NodePath("../CanvasLayer/Enchanting")
 
 [connection signal="goose_interacted_with" from="Goose" to="EnchantmentManager" method="_on_goose_interacted_with"]
 [connection signal="open_menu" from="EnchantmentManager" to="CanvasLayer/Enchanting" method="_on_enchant_manager_open_menu"]
+[connection signal="goose_died" from="Goose" to="CanvasLayer/GameOver" method="_on_goose_died"]

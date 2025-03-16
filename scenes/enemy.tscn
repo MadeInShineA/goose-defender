@@ -13,7 +13,7 @@ size = Vector2(63, 62.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a3pup"]
 size = Vector2(63.5, 62.5)
 
-[node name="Enemy" type="CharacterBody2D" groups=["CanBlink"]]
+[node name="Enemy" type="CharacterBody2D" groups=["CanBlink", "EnemyGroup"]]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_a3pup")

@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://pwcdgcptf1p6"]
+
+[ext_resource type="Script" uid="uid://cwojbanem0si6" path="res://scripts/wave_handler.gd" id="1_7bjdl"]
+
+[node name="WaveHandler" type="Node2D"]
+position = Vector2(0, 1)
+script = ExtResource("1_7bjdl")
+
+[node name="MobSpawner" type="Node2D" parent="." groups=["MobSpawner"]]
+position = Vector2(-338, -105)
+
+[node name="MobSpawner2" type="Node2D" parent="." groups=["MobSpawner"]]
+position = Vector2(138, 509)
+
+[node name="MobSpawner3" type="Node2D" parent="." groups=["MobSpawner"]]
+position = Vector2(32, -530)
+
+[node name="MobSpawner4" type="Node2D" parent="." groups=["MobSpawner"]]
+position = Vector2(589, 424)
+
+[node name="MobSpawner5" type="Node2D" parent="." groups=["MobSpawner"]]
+position = Vector2(486, -185)
+
+[node name="MobSpawner6" type="Node2D" parent="." groups=["MobSpawner"]]
+position = Vector2(-338, 285)
+
+[node name="InBetweenWavesTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="InBetweenWavesTimer" to="." method="_on_in_between_waves_timer_timeout"]
