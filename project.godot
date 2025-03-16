@@ -32,6 +32,7 @@ CanBlink="Is a group of target that blink when hit"
 IsProjectile=""
 PlayerGroup="This group is only for the player object"
 MobSpawner="This group serves for the different Mob spawners"
+EnemyGroup="This group represents the different enemies"
 
 [input]
 
