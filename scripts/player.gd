@@ -24,6 +24,8 @@ var is_stuned: bool = false
 var life: int = MAX_LIFE
 var weapon_index: int = 0
 
+signal health_changed
+
 func _ready() -> void:
 	for weapon in $Weapons.get_children():
 		print(weapon.name)
@@ -76,6 +78,7 @@ func handle_stun(stun_duration: float):
 	current_weapon.set_deferred("visible", true)  # Show the staff again
 	current_weapon.set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
 	life = MAX_LIFE
+	health_changed.emit()
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
@@ -120,6 +123,7 @@ func take_damage(damage_amount):
 	if is_invincible:
 		return
 	life -= damage_amount
+	health_changed.emit()
 	if life <= 0:
 		handle_stun(stun_duration)
 	else:
