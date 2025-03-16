@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemySequence" load_steps=2 format=3 uid="uid://5jb102qq8lsk"]
+
+[ext_resource type="Script" uid="uid://do4vr3n6kktx5" path="res://scripts/waves/enemy_sequences.gd" id="1_xmiy2"]
+
+[resource]
+script = ExtResource("1_xmiy2")
+name = ""
+amount = 10
+time = 2.0
+metadata/_custom_type_script = "uid://do4vr3n6kktx5"

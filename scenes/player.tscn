@@ -129,6 +129,10 @@ whiten_material = ExtResource("2_p47bc")
 
 [node name="Weapons" type="Node2D" parent="."]
 
+[node name="EarthStaff" parent="Weapons" groups=["Enchantable"] instance=ExtResource("5_fjrip")]
+enchantable_name = "Earth Staff"
+enchantment_texture = SubResource("ImageTexture_smehm")
+
 [node name="IceStaff" parent="Weapons" groups=["Enchantable"] instance=ExtResource("3_tuyoq")]
 enchantable_name = "Ice Staff"
 

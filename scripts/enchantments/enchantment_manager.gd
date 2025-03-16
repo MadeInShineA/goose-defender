@@ -3,7 +3,6 @@ extends Node2D
 signal open_menu
 
 @export_category("Enchantables")
-@export var weapons: Array[Weapon]
 @export var enchantments: Dictionary[String, Enchantment]
 
 @export_category("UI")

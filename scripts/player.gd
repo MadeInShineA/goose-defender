@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
-const MAX_SPEED: int = 300
+const MAX_SPEED: int = 100
 const ACCELERATION: int = 10000
 const FRICTION: int = 100000
 
@@ -58,10 +58,8 @@ func _process(delta: float) -> void:
 	var mouse_position = get_global_mouse_position()
 	if mouse_position.x < global_position.x:
 		animation_player.play("left")
-		#pivot.scale.x = -1
 	else:
 		animation_player.play("right")
-		#pivot.scale.x = 1
 
 func handle_invincibility(invincibility_duration: float):
 	is_invincible = true

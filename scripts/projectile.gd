@@ -19,6 +19,9 @@ func _on_area_entered(area):
 		await animated_sprite_2d.animation_finished  # Wait for the animation to finish
 		queue_free()  # Despawn projectile
 
+func _on_area_entered(area: Area2D) -> void:
+	self.queue_free()
+
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	if not is_hit:
 		queue_free()

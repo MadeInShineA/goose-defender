@@ -1,5 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://oqnnuvygfqck"]
 
+
 [ext_resource type="PackedScene" uid="uid://0ivogf4nn6u6" path="res://scenes/player.tscn" id="1_85g3d"]
 [ext_resource type="Script" uid="uid://bhbcqs4a64oov" path="res://scripts/main.gd" id="1_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://8q3eg1pd6q54" path="res://scenes/map.tscn" id="1_trceg"]
@@ -9,7 +10,9 @@
 [ext_resource type="Script" uid="uid://c1rjfxnh48nvp" path="res://scripts/enchantments/enchantment.gd" id="3_tefeu"]
 [ext_resource type="Resource" uid="uid://n5sbo7jmiheq" path="res://resources/enchantments/speed_enchantment.tres" id="4_o6xl0"]
 [ext_resource type="Resource" uid="uid://bbfgryqgo020p" path="res://resources/enchantments/damage_enchantment.tres" id="5_tipki"]
+[ext_resource type="Script" uid="uid://bvocwdyc37qxq" path="res://scripts/waves/wave.gd" id="6_jkv2x"]
 [ext_resource type="Shader" uid="uid://bcp4ueopqumyn" path="res://resources/hit-shader.gdshader" id="7_a8y0u"]
+[ext_resource type="Script" uid="uid://do4vr3n6kktx5" path="res://scripts/waves/enemy_sequences.gd" id="7_muem4"]
 [ext_resource type="Material" uid="uid://d15ctwuk0j6ql" path="res://resources/blur.tres" id="7_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://babloip0iqolv" path="res://scenes/pause_menu.tscn" id="9_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://btx548onk480a" path="res://scenes/game_over.tscn" id="10_a8y0u"]
@@ -23,28 +26,71 @@ resource_local_to_scene = true
 shader = ExtResource("7_a8y0u")
 shader_parameter/whiten = false
 
+[sub_resource type="Resource" id="Resource_muem4"]
+script = ExtResource("7_muem4")
+name = "Wave 1"
+type = ExtResource("8_jbj1t")
+amount = 3
+time = 2.0
+metadata/_custom_type_script = "uid://do4vr3n6kktx5"
+
+[sub_resource type="Resource" id="Resource_jbj1t"]
+script = ExtResource("7_muem4")
+name = ""
+amount = 0
+time = 0.0
+metadata/_custom_type_script = "uid://do4vr3n6kktx5"
+
+[sub_resource type="Resource" id="Resource_dp3eg"]
+script = ExtResource("6_jkv2x")
+enemy_sequences = Array[ExtResource("7_muem4")]([SubResource("Resource_muem4"), SubResource("Resource_jbj1t")])
+metadata/_custom_type_script = "uid://bvocwdyc37qxq"
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jbj1t")
 
 [node name="map" parent="." instance=ExtResource("1_trceg")]
 position = Vector2(-5, 4)
 
-[node name="Player" parent="map" instance=ExtResource("1_85g3d")]
-position = Vector2(1136, 800)
+[node name="Player" parent="." instance=ExtResource("1_85g3d")]
+position = Vector2(1136, 807)
 whiten_material = SubResource("ShaderMaterial_trceg")
 
-[node name="Camera2D" type="Camera2D" parent="map/Player"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0.199978, -0.400005)
+scale = Vector2(0.2, 0.2)
 zoom = Vector2(3, 4)
 limit_left = 576
 limit_top = -32
 limit_right = 1695
 limit_bottom = 1184
+position_smoothing_enabled = true
 
-[node name="Goose" parent="map" instance=ExtResource("2_choun")]
-position = Vector2(1137, 628)
+[node name="Goose" parent="." groups=["GooseGroup"] instance=ExtResource("2_choun")]
+position = Vector2(1137, 635)
 
-[node name="WaveHandler" parent="map" instance=ExtResource("13_trceg")]
+[node name="WaveHandler" parent="." instance=ExtResource("13_trceg")]
 position = Vector2(0, -7)
+waves = Array[ExtResource("6_jkv2x")]([SubResource("Resource_dp3eg")])
+
+[node name="MobSpawner" type="Node2D" parent="WaveHandler" groups=["MobSpawner"]]
+position = Vector2(1506, 207)
+
+[node name="MobSpawner2" type="Node2D" parent="WaveHandler" groups=["MobSpawner"]]
+position = Vector2(1335, 1172)
+
+[node name="MobSpawner3" type="Node2D" parent="WaveHandler" groups=["MobSpawner"]]
+position = Vector2(1643, 829)
+
+[node name="MobSpawner4" type="Node2D" parent="WaveHandler" groups=["MobSpawner"]]
+position = Vector2(661, 1156)
+
+[node name="MobSpawner5" type="Node2D" parent="WaveHandler" groups=["MobSpawner"]]
+position = Vector2(831, 259)
+
+[node name="MobSpawner6" type="Node2D" parent="WaveHandler" groups=["MobSpawner"]]
+position = Vector2(587, 816)
+scale = Vector2(101.067, 4838.05)
 
 [node name="MobSpawner7" type="Node2D" parent="map/WaveHandler" groups=["MobSpawner"]]
 position = Vector2(1504, 191)
@@ -99,8 +145,8 @@ enchantments = Dictionary[String, ExtResource("3_tefeu")]({
 "Speed": ExtResource("4_o6xl0")
 })
 
+[connection signal="goose_died" from="Goose" to="CanvasLayer/GameOver" method="_on_goose_died"]
+[connection signal="goose_interacted_with" from="Goose" to="EnchantmentManager" method="_on_goose_interacted_with"]
+[connection signal="end_of_wave" from="WaveHandler" to="Goose" method="_on_end_of_wave"]
 [node name="MiniMap" parent="." instance=ExtResource("15_jkv2x")]
-
-[connection signal="goose_died" from="map/Goose" to="CanvasLayer/GameOver" method="_on_goose_died"]
-[connection signal="goose_interacted_with" from="map/Goose" to="EnchantmentManager" method="_on_goose_interacted_with"]
 [connection signal="open_menu" from="EnchantmentManager" to="CanvasLayer/Enchanting" method="_on_enchant_manager_open_menu"]

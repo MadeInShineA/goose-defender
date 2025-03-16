@@ -1,9 +1,10 @@
 extends Node2D
 
+class_name Goose
+
 signal goose_interacted_with
 signal goose_died
 signal health_changed
-
 
 @export var MAX_LIFE: int = 10
 
@@ -20,7 +21,7 @@ func _process(delta: float) -> void:
 		animated_sprite.play("wave_over")
 	else:
 		animated_sprite.play("idle")
-	
+
 func take_damage(damage_amount):
 	life -= damage_amount
 	if life <= 0:
@@ -32,3 +33,9 @@ func _on_area_2d_area_entered(_area: Area2D) -> void:
 	if wave_over and _area.get_parent().is_in_group("PlayerGroup"):
 		goose_interacted_with.emit()
 		wave_over = not wave_over
+	elif _area.get_parent().is_in_group("EnemyGroup"):
+		goose_died.emit()
+
+func _on_end_of_wave() -> void:
+	life = MAX_LIFE
+	wave_over = true
