@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://oqnnuvygfqck"]
+[gd_scene load_steps=23 format=3 uid="uid://oqnnuvygfqck"]
 
 [ext_resource type="PackedScene" uid="uid://0ivogf4nn6u6" path="res://scenes/player.tscn" id="1_85g3d"]
 [ext_resource type="PackedScene" uid="uid://8q3eg1pd6q54" path="res://scenes/map.tscn" id="1_trceg"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://btx548onk480a" path="res://scenes/game_over.tscn" id="10_a8y0u"]
 [ext_resource type="Resource" uid="uid://cbjvg8n70ve27" path="res://resources/enchantments/attack_speed_enchantment.tres" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://bchl0l2li3xq1" path="res://scenes/pause_menu.tscn" id="12_muem4"]
+[ext_resource type="PackedScene" uid="uid://ka1qolqfasdw" path="res://scenes/win_screen.tscn" id="13_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://pwcdgcptf1p6" path="res://scenes/wave_handler.tscn" id="13_trceg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trceg"]
@@ -117,6 +118,9 @@ visible = false
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("12_muem4")]
 process_mode = 3
 
+[node name="WinScreen" parent="CanvasLayer" instance=ExtResource("13_dp3eg")]
+process_mode = 3
+
 [node name="EnchantmentManager" parent="." instance=ExtResource("3_sugp2")]
 visible = false
 enchantments = Dictionary[String, ExtResource("3_tefeu")]({
@@ -128,4 +132,5 @@ enchantments = Dictionary[String, ExtResource("3_tefeu")]({
 [connection signal="goose_died" from="Goose" to="CanvasLayer/GameOver" method="_on_goose_died"]
 [connection signal="goose_interacted_with" from="Goose" to="EnchantmentManager" method="_on_goose_interacted_with"]
 [connection signal="end_of_wave" from="WaveHandler" to="Goose" method="_on_end_of_wave"]
+[connection signal="won_game" from="WaveHandler" to="CanvasLayer/WinScreen" method="_on_won_game"]
 [connection signal="open_menu" from="EnchantmentManager" to="CanvasLayer/Enchanting" method="_on_enchant_manager_open_menu"]

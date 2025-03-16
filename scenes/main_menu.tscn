@@ -241,7 +241,7 @@ text = "Exit"
 position = Vector2(-160.5, 194.5)
 scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_5pajh")
-frame_progress = 0.650769
+frame_progress = 0.185046
 script = ExtResource("4_8ln24")
 
 [node name="Label" type="Label" parent="."]

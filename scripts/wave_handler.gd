@@ -9,6 +9,8 @@ signal end_of_wave
 
 @export var waves: Array[Wave]
 
+signal won_game
+
 var current_wave: int = 0
 var last_wave: int
 
@@ -42,7 +44,7 @@ func handle_enemy_death():
 		end_of_wave.emit()
 		current_wave += 1
 		if current_wave == last_wave:
-			# TODO: Go to WIN PAGE
+			won_game.emit()
 			print("VICTORY")
 			wave_timer.queue_free()
 			return
