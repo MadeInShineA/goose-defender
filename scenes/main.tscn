@@ -27,7 +27,7 @@ shader_parameter/whiten = false
 script = ExtResource("1_jbj1t")
 
 [node name="map" parent="." instance=ExtResource("1_trceg")]
-position = Vector2(0, 7)
+position = Vector2(-5, 4)
 
 [node name="Player" parent="map" instance=ExtResource("1_85g3d")]
 position = Vector2(1136, 800)
@@ -45,6 +45,18 @@ position = Vector2(1137, 628)
 
 [node name="WaveHandler" parent="map" instance=ExtResource("13_trceg")]
 position = Vector2(0, -7)
+
+[node name="MobSpawner7" type="Node2D" parent="map/WaveHandler" groups=["MobSpawner"]]
+position = Vector2(1504, 191)
+
+[node name="MobSpawner8" type="Node2D" parent="map/WaveHandler" groups=["MobSpawner"]]
+position = Vector2(1001, 243)
+
+[node name="MobSpawner9" type="Node2D" parent="map/WaveHandler" groups=["MobSpawner"]]
+position = Vector2(660, 1119)
+
+[node name="MobSpawner10" type="Node2D" parent="map/WaveHandler" groups=["MobSpawner"]]
+position = Vector2(1644, 987)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
