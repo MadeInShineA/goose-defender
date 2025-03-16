@@ -1,14 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://y8av8bqvegr8"]
+[gd_scene load_steps=5 format=3 uid="uid://y8av8bqvegr8"]
 
 [ext_resource type="Script" uid="uid://lanscyxfaw13" path="res://scripts/weapons/weapon.gd" id="1_3gxsk"]
 [ext_resource type="Texture2D" uid="uid://cal1lg0lxkg2" path="res://sprites/staves/staff16.png" id="2_ov8dy"]
 [ext_resource type="PackedScene" uid="uid://duo8yawgjwbj8" path="res://scenes/fire_projectile.tscn" id="2_xh1k6"]
+[ext_resource type="AudioStream" uid="uid://3ts1by0g4ey5" path="res://music/sound_effect/rock-destroy-6409.mp3" id="4_v8501"]
 
-[node name="FireStaff" type="Node2D"]
+[node name="FireStaff" type="Node2D" node_paths=PackedStringArray("audio_player")]
 script = ExtResource("1_3gxsk")
 projectile_scene = ExtResource("2_xh1k6")
 base_damage = 5.0
 base_attack_speed = 1.0
+audio_player = NodePath("AudioStreamPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -22,5 +24,8 @@ position = Vector2(17, 0)
 [node name="AttackTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_v8501")
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

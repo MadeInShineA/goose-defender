@@ -10,6 +10,7 @@ class_name Weapon
 @export var base_damage: float
 @export var base_attack_speed: float
 @export var element: Element
+@export var audio_player :AudioStreamPlayer
 
 @onready var current_damage: float = base_damage
 @onready var current_attack_speed: float = base_attack_speed
@@ -29,6 +30,7 @@ func _process(delta: float) -> void:
 
 func attack():
 	if can_attack:
+		audio_player.play()
 		var projectile_instance = projectile_scene.instantiate()
 		get_tree().root.add_child(projectile_instance)
 		projectile_instance.global_position = fire_point.global_position

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://oqnnuvygfqck"]
+[gd_scene load_steps=26 format=3 uid="uid://oqnnuvygfqck"]
 
 [ext_resource type="Script" uid="uid://bglgfo1x2mn7t" path="res://scripts/main.gd" id="1_0ld40"]
 [ext_resource type="PackedScene" uid="uid://0ivogf4nn6u6" path="res://scenes/player.tscn" id="1_85g3d"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://ka1qolqfasdw" path="res://scenes/win_screen.tscn" id="13_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://pwcdgcptf1p6" path="res://scenes/wave_handler.tscn" id="13_trceg"]
 [ext_resource type="PackedScene" uid="uid://bmqrihklwkhbe" path="res://scenes/mini_map.tscn" id="20_gqmmt"]
+[ext_resource type="AudioStream" uid="uid://dpib6gt0mmjyy" path="res://music/14 Town in Chaos.mp3" id="21_yc10j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trceg"]
 resource_local_to_scene = true
@@ -135,6 +136,11 @@ enchantments = Dictionary[String, ExtResource("3_tefeu")]({
 })
 
 [node name="MiniMap" parent="." instance=ExtResource("20_gqmmt")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("21_yc10j")
+volume_db = -5.0
 
 [connection signal="goose_died" from="Goose" to="CanvasLayer/GameOver" method="_on_goose_died"]
 [connection signal="goose_interacted_with" from="Goose" to="EnchantmentManager" method="_on_goose_interacted_with"]

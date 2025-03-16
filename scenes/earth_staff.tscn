@@ -1,14 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dp6te3cuna11n"]
+[gd_scene load_steps=5 format=3 uid="uid://dp6te3cuna11n"]
 
 [ext_resource type="Script" uid="uid://lanscyxfaw13" path="res://scripts/weapons/weapon.gd" id="1_capws"]
 [ext_resource type="Texture2D" uid="uid://c78fta20so0tc" path="res://sprites/staves/staff4.png" id="2_6bvuc"]
 [ext_resource type="PackedScene" uid="uid://daw41tjn0tehi" path="res://scenes/earth_projectile.tscn" id="2_ovc4x"]
+[ext_resource type="AudioStream" uid="uid://3ts1by0g4ey5" path="res://music/sound_effect/rock-destroy-6409.mp3" id="4_q8x26"]
 
-[node name="EarthStaff" type="Node2D" groups=["Enchantable"]]
+[node name="EarthStaff" type="Node2D" node_paths=PackedStringArray("audio_player") groups=["Enchantable"]]
 script = ExtResource("1_capws")
 projectile_scene = ExtResource("2_ovc4x")
 base_damage = 7.0
 base_attack_speed = 0.7
+audio_player = NodePath("AudioStreamPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -22,5 +24,8 @@ position = Vector2(17, 0)
 [node name="AttackTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_q8x26")
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

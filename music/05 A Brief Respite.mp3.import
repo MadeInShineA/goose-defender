@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://4bxlds7tferk"
+path="res://.godot/imported/05 A Brief Respite.mp3-c7c7b06045af709aa7fb6129e980a0db.mp3str"
+
+[deps]
+
+source_file="res://music/05 A Brief Respite.mp3"
+dest_files=["res://.godot/imported/05 A Brief Respite.mp3-c7c7b06045af709aa7fb6129e980a0db.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

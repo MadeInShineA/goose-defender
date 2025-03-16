@@ -275,13 +275,31 @@ var option_sentences = [
 
 @onready var random_generator = RandomNumberGenerator.new()
 
+var musiques = [
+	preload("res://music/villager/Villager_accept1.ogg"),
+	preload("res://music/villager/Villager_accept2.ogg"),
+	preload("res://music/villager/Villager_accept3.ogg"),
+	preload("res://music/villager/Villager_deny1.ogg"),
+	preload("res://music/villager/Villager_deny2.ogg"),
+	preload("res://music/villager/Villager_deny3.ogg"),
+	preload("res://music/villager/Villager_idle1.ogg"),
+	preload("res://music/villager/Villager_idle2.ogg"),
+	preload("res://music/villager/Villager_trade1.ogg")
+]
+
+func _ready() -> void:
+	var goose_audio = $GooseAudio
+	goose_audio.play()
+
 func _on_start_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 
 func _on_options_pressed() -> void:
 	option_button.text = option_sentences[random_generator.randi_range(0, option_sentences.size() - 1)]
-
+	var vilager_audio = $VilagerAudio
+	vilager_audio.stream = musiques[randi() % musiques.size()]
+	vilager_audio.play()
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
