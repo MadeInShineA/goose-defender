@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://dqxd6qglrbo70"]
+
+[ext_resource type="Script" uid="uid://c1wvpwxv6tp6j" path="res://scripts/enemy.gd" id="1_ptmmb"]
+[ext_resource type="Material" uid="uid://crd3kqv364xga" path="res://resources/enemy.tres" id="2_v0fr6"]
+[ext_resource type="Texture2D" uid="uid://cc7si78h1d2e" path="res://sprites/staves/book1.png" id="3_nqoy7"]
+[ext_resource type="PackedScene" uid="uid://dh60tdtrgj7mm" path="res://scenes/blinker.tscn" id="4_2ls4a"]
+
+[sub_resource type="GDScript" id="GDScript_72o25"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0nun3"]
+size = Vector2(63, 62.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eldwa"]
+size = Vector2(63.5, 62.5)
+
+[node name="RangedEnemy" type="CharacterBody2D"]
+script = ExtResource("1_ptmmb")
+ATTACK_RANGE = 20
+life = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_v0fr6")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_nqoy7")
+
+[node name="hurtbox" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+script = SubResource("GDScript_72o25")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(0.5, -0.75)
+shape = SubResource("RectangleShape2D_0nun3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_eldwa")
+
+[node name="blinker" parent="." groups=["CanBlink"] instance=ExtResource("4_2ls4a")]

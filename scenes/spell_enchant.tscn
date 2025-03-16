@@ -65,7 +65,7 @@ theme_override_font_sizes/font_size = 25
 text = "description"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 2
 clip_text = true
 
 [connection signal="pressed" from="Button" to="." method="_on_enchant_selected"]

@@ -56,10 +56,10 @@ func _on_enchant_manager_open_menu(
 
 
 func _on_enchant_selected(enchantable, enchantment) -> void:
-	print("Selected {enchantable_name}".format(enchantable))
+	#print("Selected {enchantable_name}".format(enchantable))
 	# TODO: apply enchantment to player or weapon
 	if (not enchantable.is_unlocked):
-		print("New weapon unlocked")
+		#print("New weapon unlocked")
 		enchantable.is_unlocked = true
 		
 	enchantable.apply_enchantment(enchantment)

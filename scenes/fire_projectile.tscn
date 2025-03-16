@@ -34,8 +34,7 @@ animations = [{
 radius = 9.0
 
 [node name="Projectile" type="Area2D" groups=["IsProjectile"]]
-collision_layer = 2
-collision_mask = 2
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_jxwu6")
 SPEED = 500
 

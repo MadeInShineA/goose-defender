@@ -6,28 +6,12 @@
 position = Vector2(6, -2)
 script = ExtResource("1_7bjdl")
 
-[node name="MobSpawner" type="Node2D" parent="." groups=["MobSpawner"]]
-position = Vector2(896, -57)
-
-[node name="MobSpawner2" type="Node2D" parent="." groups=["MobSpawner"]]
-position = Vector2(96, 305)
-
-[node name="MobSpawner3" type="Node2D" parent="." groups=["MobSpawner"]]
-position = Vector2(-260, 361)
-
-[node name="MobSpawner4" type="Node2D" parent="." groups=["MobSpawner"]]
-position = Vector2(155, -57)
-
-[node name="MobSpawner5" type="Node2D" parent="." groups=["MobSpawner"]]
-position = Vector2(949, 305)
-
-[node name="MobSpawner6" type="Node2D" parent="." groups=["MobSpawner"]]
-position = Vector2(-94, -57)
-scale = Vector2(101.067, 4838.05)
-
-[node name="InBetweenWavesTimer" type="Timer" parent="."]
+[node name="WavesTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 autostart = true
 
-[connection signal="timeout" from="InBetweenWavesTimer" to="." method="_on_in_between_waves_timer_timeout"]
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="WavesTimer" to="." method="_on_wave_start"]

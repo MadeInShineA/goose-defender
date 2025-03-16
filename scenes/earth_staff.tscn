@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp6te3cuna11n"]
+
+[ext_resource type="Script" uid="uid://lanscyxfaw13" path="res://scripts/weapons/weapon.gd" id="1_capws"]
+[ext_resource type="Texture2D" uid="uid://c78fta20so0tc" path="res://sprites/staves/staff4.png" id="2_6bvuc"]
+[ext_resource type="PackedScene" uid="uid://bl04m3xnyc0iy" path="res://scenes/ice_projectile.tscn" id="2_ovc4x"]
+
+[node name="EarthStaff" type="Node2D"]
+script = ExtResource("1_capws")
+projectile_scene = ExtResource("2_ovc4x")
+base_damage = 7.0
+base_attack_speed = 0.7
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(11, 0)
+rotation = 2.34398
+texture = ExtResource("2_6bvuc")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(17, 0)
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
