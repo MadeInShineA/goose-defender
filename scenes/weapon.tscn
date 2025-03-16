@@ -1,12 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://l6i72lifskfg"]
+[gd_scene load_steps=4 format=3 uid="uid://l6i72lifskfg"]
 
-[ext_resource type="Script" uid="uid://lanscyxfaw13" path="res://scripts/weapon.gd" id="1_xasec"]
-[ext_resource type="Texture2D" uid="uid://c5x7keinvwntj" path="res://sprites/staves/book1.png" id="2_uxn4k"]
+[ext_resource type="Script" uid="uid://lanscyxfaw13" path="res://scripts/weapons/weapon.gd" id="1_xasec"]
+[ext_resource type="PackedScene" uid="uid://duo8yawgjwbj8" path="res://scenes/fire_projectile.tscn" id="2_bmw2d"]
+[ext_resource type="Texture2D" uid="uid://vgpd3da6fk1m" path="res://sprites/staves/staff13.png" id="2_uxn4k"]
 
 [node name="Weapon" type="Node2D"]
+position = Vector2(0, 4.76837e-07)
+rotation = 2.34398
 script = ExtResource("1_xasec")
-base_damage = 10.0
-base_attack_speed = 2.0
+projectile_scene = ExtResource("2_bmw2d")
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-14.6667, -15.0295)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-7.68257, -7.87262)
 texture = ExtResource("2_uxn4k")

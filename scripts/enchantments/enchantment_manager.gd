@@ -2,8 +2,7 @@ extends Node2D
 
 signal open_menu
 
-@export_category("Enchants")
-@export var player: CharacterBody2D
+@export_category("Enchantables")
 @export var weapons: Array[Weapon]
 @export var enchantments: Dictionary[String, Enchantment]
 

@@ -20,7 +20,33 @@ func _on_enchant_manager_open_menu(
 	# Generate random enchantments
 	for spell_panel in spell_panels:
 		# random enchantable (Player, weapon1, weapon2, ...)
-		var rand_able = randi() % enchantables.size() # rng.randf_range(0, enchantables.size())
+		var probs: Array[float] = []
+		
+		# Assign weights
+		for able in enchantables:
+			if not able.is_unlocked:
+				probs.append(0.05)
+			else:
+				probs.append(95.5)
+		
+		# Compute cumulative sum
+		var cumulative_probs: Array[float] = []
+		var total = 0.0
+		for prob in probs:
+			total += prob
+			cumulative_probs.append(total)
+		
+		# Pick a random number between 0 and total weight
+		var rand_value = randf() * total
+		var rand_able = 0
+		# Find which probability range rand_value falls into
+		for i in range(cumulative_probs.size()):
+			if rand_value <= cumulative_probs[i]:
+				rand_able = i  # Return the selected index
+				break
+				
+		print(enchantables)
+		print(enchantments)
 		
 		var random_key = enchantments.keys()[randi() % enchantments.size()]
 		var random_enchant = enchantments[random_key]
@@ -39,5 +65,3 @@ func _on_enchant_selected(enchantable, enchantment) -> void:
 	
 	blur.hide()
 	hide()
-
-# INFO: sadas 

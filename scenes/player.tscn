@@ -1,26 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://0ivogf4nn6u6"]
+[gd_scene load_steps=22 format=3 uid="uid://0ivogf4nn6u6"]
 
 [ext_resource type="Script" uid="uid://dph8r1fa6o7oi" path="res://scripts/player.gd" id="1_sweqy"]
 [ext_resource type="Texture2D" uid="uid://b6rlw71s26aas" path="res://sprites/character/char_a_p1_0bas_humn_v01.png" id="2_onrkg"]
 [ext_resource type="Material" uid="uid://crd3kqv364xga" path="res://resources/enemy.tres" id="2_p47bc"]
-[ext_resource type="PackedScene" uid="uid://y8av8bqvegr8" path="res://scenes/staff.tscn" id="3_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://i2ee1kyoasqm" path="res://scenes/ice_staff.tscn" id="3_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://dh60tdtrgj7mm" path="res://scenes/blinker.tscn" id="4_lvxji"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1jxqw"]
-atlas = ExtResource("2_onrkg")
-region = Rect2(0, 384, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dw050"]
-atlas = ExtResource("2_onrkg")
-region = Rect2(64, 384, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b26j0"]
-atlas = ExtResource("2_onrkg")
-region = Rect2(128, 384, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n7ghd"]
-atlas = ExtResource("2_onrkg")
-region = Rect2(192, 384, 64, 64)
+[ext_resource type="PackedScene" uid="uid://y8av8bqvegr8" path="res://scenes/fire_staff.tscn" id="4_tuyoq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nvl01"]
 atlas = ExtResource("2_onrkg")
@@ -37,6 +22,22 @@ region = Rect2(128, 448, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bwjto"]
 atlas = ExtResource("2_onrkg")
 region = Rect2(192, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jxqw"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(0, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw050"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(64, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b26j0"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(128, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7ghd"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(192, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
 atlas = ExtResource("2_onrkg")
@@ -58,23 +59,6 @@ region = Rect2(384, 128, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1jxqw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dw050")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b26j0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n7ghd")
-}],
-"loop": true,
-"name": &"left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_nvl01")
 }, {
 "duration": 1.0,
@@ -85,6 +69,23 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bwjto")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jxqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dw050")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b26j0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7ghd")
 }],
 "loop": true,
 "name": &"right",
@@ -116,30 +117,26 @@ height = 15.987
 radius = 4.0
 height = 20.0
 
-[node name="Player" type="CharacterBody2D" groups=["CanBlink"]]
+[node name="Player" type="CharacterBody2D" groups=["CanBlink", "PlayerGroup"]]
 script = ExtResource("1_sweqy")
 whiten_material = ExtResource("2_p47bc")
 
+[node name="Weapons" type="Node2D" parent="."]
+
+[node name="IceStaff" parent="Weapons" groups=["Enchantable"] instance=ExtResource("3_tuyoq")]
+enchantable_name = "Ice Staff"
+
+[node name="FireStaff" parent="Weapons" groups=["Enchantable"] instance=ExtResource("4_tuyoq")]
+enchantable_name = "Fire Staff"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2, -1)
 scale = Vector2(0.484375, 0.484375)
 sprite_frames = SubResource("SpriteFrames_n7ghd")
-animation = &"stun"
-frame = 1
-frame_progress = 0.80485
+animation = &"right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 0.00632393
 shape = SubResource("CapsuleShape2D_nvl01")
-
-[node name="left_staff_position" type="Marker2D" parent="."]
-position = Vector2(-3, 0)
-
-[node name="right_staff_position" type="Marker2D" parent="."]
-position = Vector2(3, 0)
-
-[node name="staff" parent="." instance=ExtResource("3_i3pqv")]
-position = Vector2(3, -5.96046e-08)
 
 [node name="hurtbox" type="Area2D" parent="."]
 

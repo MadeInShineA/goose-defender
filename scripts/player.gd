@@ -6,16 +6,15 @@ const MAX_SPEED: int = 300
 const ACCELERATION: int = 10000
 const FRICTION: int = 100000
 
-@onready var animation_player: AnimatedSprite2D = $AnimatedSprite2D
-@onready var staff: Node2D = $staff
-@onready var right_staff_position: Node2D = $right_staff_position
-@onready var left_staff_position: Node2D = $left_staff_position
+@export var MAX_LIFE: int = 10
+@export var whiten_material: ShaderMaterial
 
+@onready var animation_player: AnimatedSprite2D = $AnimatedSprite2D
+@onready var weapons: Array[Node2D] = []
+@onready var current_weapon: Weapon
 @onready var hurtbox = $hurtbox
 @onready var blinker = $blinker
 
-@export var MAX_LIFE: int = 10
-@export var whiten_material: ShaderMaterial
 const whiten_duration: float = 0.15
 const blinking_duration: float = 1.0
 const invincibility_duration: int = 2
@@ -23,6 +22,14 @@ var is_invincible: bool = false
 const stun_duration: float = 1.0
 var is_stuned: bool = false
 var life: int = MAX_LIFE
+var weapon_index: int = 0
+
+func _ready() -> void:
+	for weapon in $Weapons.get_children():
+		print(weapon.name)
+		weapons.append(weapon)
+	
+	current_weapon = weapons[0]
 
 func _process(delta: float) -> void:
 	if is_stuned:
@@ -42,11 +49,11 @@ func _process(delta: float) -> void:
 	# Determine direction based on mouse position
 	var mouse_position = get_global_mouse_position()
 	if mouse_position.x < global_position.x:
-		animation_player.play("right")
-		staff.position = left_staff_position.position
-	else:
 		animation_player.play("left")
-		staff.position = right_staff_position.position
+		#pivot.scale.x = -1
+	else:
+		animation_player.play("right")
+		#pivot.scale.x = 1
 
 func handle_invincibility(invincibility_duration: float):
 	is_invincible = true
@@ -55,19 +62,30 @@ func handle_invincibility(invincibility_duration: float):
 	
 func handle_stun(stun_duration: float):
 	is_stuned = true
-	staff.set_deferred("visible", false)  # Hide the staff
-	staff.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)  # Disable processing
+	current_weapon.set_deferred("visible", false)  # Hide the staff
+	current_weapon.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)  # Disable processing
 	animation_player.play("stun")
 	await get_tree().create_timer(stun_duration).timeout
 	
 	is_stuned = false
-	staff.set_deferred("visible", true)  # Show the staff again
-	staff.set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
+	current_weapon.set_deferred("visible", true)  # Show the staff again
+	current_weapon.set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
 	life = MAX_LIFE
+	
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			# next weapon
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				weapon_index += 1
+				
+				# call the zoom function
+			# prev weapon
+			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				weapon_index -= 1
 	
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	pass
-	
 	
 func take_damage(damage_amount):
 	if is_invincible:
