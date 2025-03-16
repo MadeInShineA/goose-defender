@@ -8,18 +8,20 @@ signal died
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+@export var MAX_LIFE: int = 10
+
 @export var SPEED: int
-@export var ATTACK_RANGE: int = 2
+@export var ATTACK_RANGE: int = 5
 @export var ATTACK_DAMAGE: int = 1
 @onready var hurtbox = $hurtbox
 @onready var blinker = $blinker
 @onready var colision_box = $CollisionShape2D
-@export var life: int = 10
 @export var target: CharacterBody2D
 @export var whiten_material: ShaderMaterial
 
 const whiten_duration: float = 0.15
 const blinking_duration = 1
+var life: int = MAX_LIFE
 
 func  _ready() -> void:
 	call_deferred("enemy_setup")
@@ -57,7 +59,6 @@ func take_damage(damage_amount):
 		queue_free()
 	else:
 		show_blink()
-		health_changed.emit()
 		
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area in get_tree().get_nodes_in_group("IsProjectile"):
@@ -66,6 +67,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 			self.queue_free()
 			died.emit()
 		else:
+			health_changed.emit()
 			show_blink()
 			
 func show_blink():
@@ -79,3 +81,7 @@ func _on_timer_timeout() -> void:
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
+
+
+func update() -> void:
+	pass # Replace with function body.

@@ -1,11 +1,14 @@
-[gd_scene load_steps=25 format=3 uid="uid://0ivogf4nn6u6"]
+[gd_scene load_steps=28 format=3 uid="uid://0ivogf4nn6u6"]
 
 [ext_resource type="Script" uid="uid://dph8r1fa6o7oi" path="res://scripts/player.gd" id="1_sweqy"]
 [ext_resource type="Texture2D" uid="uid://b6rlw71s26aas" path="res://sprites/character/char_a_p1_0bas_humn_v01.png" id="2_onrkg"]
 [ext_resource type="Material" uid="uid://crd3kqv364xga" path="res://resources/enemy.tres" id="2_p47bc"]
 [ext_resource type="PackedScene" uid="uid://i2ee1kyoasqm" path="res://scenes/ice_staff.tscn" id="3_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://cy87rgaqasy3w" path="res://sprites/healthbar/standard-empty-1.png" id="3_y4r1p"]
+[ext_resource type="Texture2D" uid="uid://beag32ac54wu6" path="res://sprites/healthbar/standard-full-1.png" id="4_d2wvv"]
 [ext_resource type="PackedScene" uid="uid://dh60tdtrgj7mm" path="res://scenes/blinker.tscn" id="4_lvxji"]
 [ext_resource type="PackedScene" uid="uid://y8av8bqvegr8" path="res://scenes/fire_staff.tscn" id="4_tuyoq"]
+[ext_resource type="Script" uid="uid://cbqjbk21icmak" path="res://scenes/texture_progress_bar.gd" id="5_d2wvv"]
 [ext_resource type="PackedScene" uid="uid://dp6te3cuna11n" path="res://scenes/earth_staff.tscn" id="5_fjrip"]
 [ext_resource type="PackedScene" uid="uid://c031wprce88hi" path="res://scenes/wind_staff.tscn" id="6_smehm"]
 
@@ -125,6 +128,16 @@ height = 20.0
 script = ExtResource("1_sweqy")
 whiten_material = ExtResource("2_p47bc")
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -11.0
+offset_top = -16.0
+offset_right = 13.0
+offset_bottom = -10.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_y4r1p")
+texture_progress = ExtResource("4_d2wvv")
+script = ExtResource("5_d2wvv")
+
 [node name="Weapons" type="Node2D" parent="."]
 
 [node name="EarthStaff" parent="Weapons" instance=ExtResource("5_fjrip")]
@@ -156,4 +169,5 @@ debug_color = Color(0.901318, 0.000160757, 0.759867, 0.42)
 
 [node name="blinker" parent="." instance=ExtResource("4_lvxji")]
 
+[connection signal="health_changed" from="." to="TextureProgressBar" method="_on_player_health_changed"]
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hitbox_area_entered"]

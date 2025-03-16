@@ -1,10 +1,56 @@
-[gd_scene load_steps=2 format=3 uid="uid://pwcdgcptf1p6"]
+[gd_scene load_steps=11 format=3 uid="uid://pwcdgcptf1p6"]
 
 [ext_resource type="Script" uid="uid://cwojbanem0si6" path="res://scripts/wave_handler.gd" id="1_7bjdl"]
+[ext_resource type="Script" uid="uid://bvocwdyc37qxq" path="res://scripts/waves/wave.gd" id="2_tx3c4"]
+[ext_resource type="Script" uid="uid://do4vr3n6kktx5" path="res://scripts/waves/enemy_sequences.gd" id="3_wgev1"]
+
+[sub_resource type="PackedScene" id="PackedScene_tx3c4"]
+
+[sub_resource type="Resource" id="Resource_ttnx0"]
+script = ExtResource("3_wgev1")
+name = "1"
+type = SubResource("PackedScene_tx3c4")
+amount = 8
+time = 1.0
+metadata/_custom_type_script = "uid://do4vr3n6kktx5"
+
+[sub_resource type="Resource" id="Resource_tx3c4"]
+script = ExtResource("3_wgev1")
+name = ""
+amount = 15
+time = 1.0
+metadata/_custom_type_script = "uid://do4vr3n6kktx5"
+
+[sub_resource type="Resource" id="Resource_wgev1"]
+script = ExtResource("3_wgev1")
+name = ""
+amount = 20
+time = 0.5
+metadata/_custom_type_script = "uid://do4vr3n6kktx5"
+
+[sub_resource type="Resource" id="Resource_lo4by"]
+script = ExtResource("3_wgev1")
+name = ""
+amount = 25
+time = 0.4
+metadata/_custom_type_script = "uid://do4vr3n6kktx5"
+
+[sub_resource type="Resource" id="Resource_pr7b1"]
+script = ExtResource("3_wgev1")
+name = ""
+amount = 30
+time = 0.1
+metadata/_custom_type_script = "uid://do4vr3n6kktx5"
+
+[sub_resource type="Resource" id="Resource_7pokj"]
+script = ExtResource("2_tx3c4")
+enemy_sequences = Array[ExtResource("3_wgev1")]([SubResource("Resource_ttnx0"), SubResource("Resource_tx3c4"), SubResource("Resource_wgev1"), SubResource("Resource_lo4by"), SubResource("Resource_pr7b1")])
+metadata/_custom_type_script = "uid://bvocwdyc37qxq"
 
 [node name="WaveHandler" type="Node2D"]
 position = Vector2(6, -2)
 script = ExtResource("1_7bjdl")
+waves = Array[ExtResource("2_tx3c4")]([SubResource("Resource_7pokj"), null, null, null, null])
 
 [node name="WavesTimer" type="Timer" parent="."]
 wait_time = 2.0

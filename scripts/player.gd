@@ -23,6 +23,7 @@ const stun_duration: float = 1.0
 var is_stuned: bool = false
 var life: int = MAX_LIFE
 var weapon_index: int = 0
+signal health_changed
 
 func _ready() -> void:
 	for weapon in $Weapons.get_children():
@@ -121,6 +122,7 @@ func take_damage(damage_amount):
 	if life <= 0:
 		handle_stun(stun_duration)
 	else:
+		health_changed.emit()
 		handle_invincibility(invincibility_duration)
 		whiten_material.set_shader_parameter("whiten", true)
 		await(get_tree().create_timer(whiten_duration)).timeout
