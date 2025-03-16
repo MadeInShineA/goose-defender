@@ -5,7 +5,7 @@ class_name Enemy
 signal died
 
 @export var SPEED: int
-@export var ATTACK_RANGE: int = 60
+@export var ATTACK_RANGE: int = 2
 @export var ATTACK_DAMAGE: int = 1
 @onready var hurtbox = $hurtbox
 @onready var blinker = $blinker
@@ -13,8 +13,6 @@ signal died
 @export var life: int = 10
 @export var target: CharacterBody2D
 @export var whiten_material: ShaderMaterial
-
-@onready var blinker: Blinker = $blinker
 
 const whiten_duration: float = 0.15
 const blinking_duration = 1
@@ -30,15 +28,6 @@ func take_damage(amount):
 		whiten_material.set_shader_parameter("whiten", false)
 		blinker.start_blinking(self, blinking_duration)
 		
-=======
-@export var ATTACK_RANGE: int = 60
-@export var ATTACK: int = 1
-const whiten_duration: float = 0.15
-const blinking_duration = 1
-signal died
-
-var speed = 150
-var target: CharacterBody2D
 
 func  _ready() -> void:
 	var player: Player = get_tree().get_first_node_in_group("PlayerGroup")
@@ -53,7 +42,7 @@ func _physics_process(delta: float) -> void:
 			move_and_slide()
 		else:
 			pass
-			#target.take_damage(ATTACK)
+			target.take_damage(ATTACK_DAMAGE)
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Player or area.get_parent() is Enemy:

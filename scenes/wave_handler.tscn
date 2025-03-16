@@ -3,26 +3,27 @@
 [ext_resource type="Script" uid="uid://cwojbanem0si6" path="res://scripts/wave_handler.gd" id="1_7bjdl"]
 
 [node name="WaveHandler" type="Node2D"]
-position = Vector2(0, 1)
+position = Vector2(530, 317)
 script = ExtResource("1_7bjdl")
 
 [node name="MobSpawner" type="Node2D" parent="." groups=["MobSpawner"]]
-position = Vector2(-338, -105)
+position = Vector2(896, -57)
 
 [node name="MobSpawner2" type="Node2D" parent="." groups=["MobSpawner"]]
-position = Vector2(138, 509)
+position = Vector2(96, 305)
 
 [node name="MobSpawner3" type="Node2D" parent="." groups=["MobSpawner"]]
-position = Vector2(32, -530)
+position = Vector2(-260, 361)
 
 [node name="MobSpawner4" type="Node2D" parent="." groups=["MobSpawner"]]
-position = Vector2(589, 424)
+position = Vector2(155, -57)
 
 [node name="MobSpawner5" type="Node2D" parent="." groups=["MobSpawner"]]
-position = Vector2(486, -185)
+position = Vector2(949, 305)
 
 [node name="MobSpawner6" type="Node2D" parent="." groups=["MobSpawner"]]
-position = Vector2(-338, 285)
+position = Vector2(-94, -57)
+scale = Vector2(101.067, 4838.05)
 
 [node name="InBetweenWavesTimer" type="Timer" parent="."]
 wait_time = 2.0

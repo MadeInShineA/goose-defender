@@ -1,29 +1,27 @@
-[gd_scene load_steps=14 format=3 uid="uid://oqnnuvygfqck"]
+[gd_scene load_steps=15 format=3 uid="uid://oqnnuvygfqck"]
 
 [ext_resource type="PackedScene" uid="uid://0ivogf4nn6u6" path="res://scenes/player.tscn" id="1_85g3d"]
+[ext_resource type="PackedScene" uid="uid://8q3eg1pd6q54" path="res://scenes/map.tscn" id="1_trceg"]
 [ext_resource type="PackedScene" uid="uid://dv4fdij1ccgy4" path="res://scenes/enchanting_ui.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://dbja2a27cqj1y" path="res://scenes/goose.tscn" id="2_choun"]
 [ext_resource type="PackedScene" uid="uid://chyxuydo0t35b" path="res://scenes/enchantment_manager.tscn" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://c1rjfxnh48nvp" path="res://scripts/enchantments/enchantment.gd" id="3_tefeu"]
 [ext_resource type="Resource" uid="uid://n5sbo7jmiheq" path="res://resources/enchantments/speed_enchantment.tres" id="4_o6xl0"]
 [ext_resource type="Resource" uid="uid://bbfgryqgo020p" path="res://resources/enchantments/damage_enchantment.tres" id="5_tipki"]
-[ext_resource type="PackedScene" uid="uid://ghue8q3t70uy" path="res://scenes/enemy.tscn" id="6_trceg"]
 [ext_resource type="Shader" uid="uid://bcp4ueopqumyn" path="res://resources/hit-shader.gdshader" id="7_a8y0u"]
 [ext_resource type="Material" uid="uid://d15ctwuk0j6ql" path="res://resources/blur.tres" id="7_ya4ey"]
-[ext_resource type="Resource" uid="uid://cbjvg8n70ve27" path="res://resources/enchantments/attack_speed_enchantment.tres" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://btx548onk480a" path="res://scenes/game_over.tscn" id="10_a8y0u"]
+[ext_resource type="Resource" uid="uid://cbjvg8n70ve27" path="res://resources/enchantments/attack_speed_enchantment.tres" id="11_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://pwcdgcptf1p6" path="res://scenes/wave_handler.tscn" id="13_trceg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trceg"]
 resource_local_to_scene = true
 shader = ExtResource("7_a8y0u")
 shader_parameter/whiten = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jkv2x"]
-resource_local_to_scene = true
-shader = ExtResource("7_a8y0u")
-shader_parameter/whiten = false
-
 [node name="Main" type="Node2D"]
+
+[node name="map" parent="." instance=ExtResource("1_trceg")]
 
 [node name="Player" parent="." instance=ExtResource("1_85g3d")]
 position = Vector2(372, 277)
@@ -34,14 +32,10 @@ whiten_material = SubResource("ShaderMaterial_trceg")
 position = Vector2(516, 282)
 scale = Vector2(2, 2)
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_trceg")]
-position = Vector2(1105, 279)
-target = NodePath("../Player")
-whiten_material = SubResource("ShaderMaterial_jkv2x")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Blur" type="ColorRect" parent="CanvasLayer"]
+visible = false
 material = ExtResource("7_ya4ey")
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,6 +45,7 @@ grow_vertical = 2
 
 [node name="Enchanting" parent="CanvasLayer" instance=ExtResource("2_0wfyh")]
 process_mode = 3
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -59,17 +54,21 @@ anchor_bottom = 0.5
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="EnchantmentManager" parent="." node_paths=PackedStringArray("enchant_ui") instance=ExtResource("3_sugp2")]
 [node name="GameOver" parent="CanvasLayer" instance=ExtResource("10_a8y0u")]
 process_mode = 3
+visible = false
 
+[node name="EnchantmentManager" parent="." instance=ExtResource("3_sugp2")]
+visible = false
 enchantments = Dictionary[String, ExtResource("3_tefeu")]({
-"Attack Speed Enchantment": ExtResource("11_ya4ey"),
-"Damage Enchantment": ExtResource("5_tipki"),
-"Speed Enchantment": ExtResource("4_o6xl0")
+"Attack Speed": ExtResource("11_ya4ey"),
+"Damage": ExtResource("5_tipki"),
+"Speed": ExtResource("4_o6xl0")
 })
-enchant_ui = NodePath("../CanvasLayer/Enchanting")
 
+[node name="WaveHandler" parent="." instance=ExtResource("13_trceg")]
+position = Vector2(0, 0)
+
+[connection signal="goose_died" from="Goose" to="CanvasLayer/GameOver" method="_on_goose_died"]
 [connection signal="goose_interacted_with" from="Goose" to="EnchantmentManager" method="_on_goose_interacted_with"]
 [connection signal="open_menu" from="EnchantmentManager" to="CanvasLayer/Enchanting" method="_on_enchant_manager_open_menu"]
-[connection signal="goose_died" from="Goose" to="CanvasLayer/GameOver" method="_on_goose_died"]
