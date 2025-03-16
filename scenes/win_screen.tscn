@@ -1,0 +1,1037 @@
+[gd_scene load_steps=10 format=3 uid="uid://eweb5degwsuu"]
+
+[ext_resource type="FontFile" uid="uid://f4efyoo1wgd6" path="res://resources/GrapeSoda.ttf" id="1_0lrm4"]
+[ext_resource type="Script" uid="uid://dei0vxg4pcxqd" path="res://scripts/win_screen.gd" id="1_2l6cc"]
+[ext_resource type="PackedScene" uid="uid://d06yrs0bgafig" path="res://scenes/fireworks.tscn" id="5_doie2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r6ob7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o8vhx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0d7wf"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.203922)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l756l"]
+bg_color = Color(0.907942, 0.907942, 0.907942, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.203922)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qr20w"]
+bg_color = Color(0.875456, 0.875457, 0.875456, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.203922)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afixa"]
+bg_color = Color(0.804743, 0.804743, 0.804743, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.203922)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2l6cc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -373.5
+offset_top = -204.5
+offset_right = 373.5
+offset_bottom = 204.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="WinText" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_fonts/font = ExtResource("1_0lrm4")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_r6ob7")
+text = "Congratulations!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReplayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o8vhx")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_0d7wf")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_0d7wf")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_0d7wf")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_l756l")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_0d7wf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qr20w")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_0d7wf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_afixa")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_0d7wf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0d7wf")
+text = "Play again"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o8vhx")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_0d7wf")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_0d7wf")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_0d7wf")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_l756l")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_0d7wf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qr20w")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_0d7wf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_afixa")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_0d7wf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0d7wf")
+text = "Exit"
+
+[node name="Node2D4" parent="." instance=ExtResource("5_doie2")]
+position = Vector2(1090, -89)
+
+[node name="Node2D4" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(0, 89)
+rotation = -0.138944
+
+[node name="Node2D5" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(988, 126)
+rotation = -0.138944
+
+[node name="Node2D6" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 89)
+rotation = -0.138944
+
+[node name="Node2D7" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(664, 89)
+rotation = -0.138944
+
+[node name="Node2D8" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(424, 89)
+rotation = -0.138944
+
+[node name="Node2D9" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(207, 89)
+rotation = -0.138944
+
+[node name="Node2D10" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 89)
+rotation = -0.138944
+
+[node name="Node2D11" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 89)
+rotation = -0.138944
+
+[node name="Node2D12" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(519, 167)
+
+[node name="Node2D4" parent="Node2D4/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(0, 89)
+rotation = -0.138944
+
+[node name="Node2D5" parent="Node2D4/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(988, 126)
+rotation = -0.138944
+
+[node name="Node2D6" parent="Node2D4/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 89)
+rotation = -0.138944
+
+[node name="Node2D7" parent="Node2D4/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(664, 89)
+rotation = -0.138944
+
+[node name="Node2D8" parent="Node2D4/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(424, 89)
+rotation = -0.138944
+
+[node name="Node2D9" parent="Node2D4/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(207, 89)
+rotation = -0.138944
+
+[node name="Node2D10" parent="Node2D4/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 89)
+rotation = -0.138944
+
+[node name="Node2D11" parent="Node2D4/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 89)
+rotation = -0.138944
+
+[node name="Node2D13" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(1507, 204)
+
+[node name="Node2D14" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(-329, 167)
+
+[node name="Node2D15" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(1183, 167)
+
+[node name="Node2D16" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(943, 167)
+
+[node name="Node2D17" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(726, 167)
+
+[node name="Node2D18" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(210, 167)
+
+[node name="Node2D19" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(-54, 167)
+
+[node name="Node2D20" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(0, 359)
+
+[node name="Node2D4" parent="Node2D4/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(0, 89)
+rotation = -0.138944
+
+[node name="Node2D5" parent="Node2D4/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(988, 126)
+rotation = -0.138944
+
+[node name="Node2D6" parent="Node2D4/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 89)
+rotation = -0.138944
+
+[node name="Node2D7" parent="Node2D4/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(664, 89)
+rotation = -0.138944
+
+[node name="Node2D8" parent="Node2D4/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(424, 89)
+rotation = -0.138944
+
+[node name="Node2D9" parent="Node2D4/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(207, 89)
+rotation = -0.138944
+
+[node name="Node2D10" parent="Node2D4/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 89)
+rotation = -0.138944
+
+[node name="Node2D11" parent="Node2D4/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 89)
+rotation = -0.138944
+
+[node name="Node2D12" parent="Node2D4/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(519, 167)
+
+[node name="Node2D4" parent="Node2D4/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(0, 89)
+rotation = -0.138944
+
+[node name="Node2D5" parent="Node2D4/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(988, 126)
+rotation = -0.138944
+
+[node name="Node2D6" parent="Node2D4/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 89)
+rotation = -0.138944
+
+[node name="Node2D7" parent="Node2D4/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(664, 89)
+rotation = -0.138944
+
+[node name="Node2D8" parent="Node2D4/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(424, 89)
+rotation = -0.138944
+
+[node name="Node2D9" parent="Node2D4/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(207, 89)
+rotation = -0.138944
+
+[node name="Node2D10" parent="Node2D4/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 89)
+rotation = -0.138944
+
+[node name="Node2D11" parent="Node2D4/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 89)
+rotation = -0.138944
+
+[node name="Node2D13" parent="Node2D4/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(1507, 204)
+
+[node name="Node2D14" parent="Node2D4/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-329, 167)
+
+[node name="Node2D15" parent="Node2D4/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(1183, 167)
+
+[node name="Node2D16" parent="Node2D4/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(943, 167)
+
+[node name="Node2D17" parent="Node2D4/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(726, 167)
+
+[node name="Node2D18" parent="Node2D4/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(210, 167)
+
+[node name="Node2D19" parent="Node2D4/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-54, 167)
+
+[node name="Node2D21" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(988, 396)
+
+[node name="Node2D22" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 359)
+
+[node name="Node2D23" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(664, 359)
+
+[node name="Node2D24" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(424, 359)
+
+[node name="Node2D25" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(207, 359)
+
+[node name="Node2D26" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 359)
+
+[node name="Node2D27" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 359)
+
+[node name="Node2D28" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(-270, 0)
+
+[node name="Node2D4" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(0, 89)
+rotation = -0.138944
+
+[node name="Node2D5" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(988, 126)
+rotation = -0.138944
+
+[node name="Node2D6" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 89)
+rotation = -0.138944
+
+[node name="Node2D7" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(664, 89)
+rotation = -0.138944
+
+[node name="Node2D8" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(424, 89)
+rotation = -0.138944
+
+[node name="Node2D9" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(207, 89)
+rotation = -0.138944
+
+[node name="Node2D10" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 89)
+rotation = -0.138944
+
+[node name="Node2D11" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 89)
+rotation = -0.138944
+
+[node name="Node2D12" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(519, 167)
+
+[node name="Node2D4" parent="Node2D4/Node2D28/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(0, 89)
+rotation = -0.138944
+
+[node name="Node2D5" parent="Node2D4/Node2D28/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(988, 126)
+rotation = -0.138944
+
+[node name="Node2D6" parent="Node2D4/Node2D28/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 89)
+rotation = -0.138944
+
+[node name="Node2D7" parent="Node2D4/Node2D28/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(664, 89)
+rotation = -0.138944
+
+[node name="Node2D8" parent="Node2D4/Node2D28/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(424, 89)
+rotation = -0.138944
+
+[node name="Node2D9" parent="Node2D4/Node2D28/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(207, 89)
+rotation = -0.138944
+
+[node name="Node2D10" parent="Node2D4/Node2D28/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 89)
+rotation = -0.138944
+
+[node name="Node2D11" parent="Node2D4/Node2D28/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 89)
+rotation = -0.138944
+
+[node name="Node2D13" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(1507, 204)
+
+[node name="Node2D14" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(-329, 167)
+
+[node name="Node2D15" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(1183, 167)
+
+[node name="Node2D16" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(943, 167)
+
+[node name="Node2D17" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(726, 167)
+
+[node name="Node2D18" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(210, 167)
+
+[node name="Node2D19" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(-54, 167)
+
+[node name="Node2D20" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(0, 359)
+
+[node name="Node2D4" parent="Node2D4/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(0, 89)
+rotation = -0.138944
+
+[node name="Node2D5" parent="Node2D4/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(988, 126)
+rotation = -0.138944
+
+[node name="Node2D6" parent="Node2D4/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 89)
+rotation = -0.138944
+
+[node name="Node2D7" parent="Node2D4/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(664, 89)
+rotation = -0.138944
+
+[node name="Node2D8" parent="Node2D4/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(424, 89)
+rotation = -0.138944
+
+[node name="Node2D9" parent="Node2D4/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(207, 89)
+rotation = -0.138944
+
+[node name="Node2D10" parent="Node2D4/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 89)
+rotation = -0.138944
+
+[node name="Node2D11" parent="Node2D4/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 89)
+rotation = -0.138944
+
+[node name="Node2D12" parent="Node2D4/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(519, 167)
+
+[node name="Node2D4" parent="Node2D4/Node2D28/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(0, 89)
+rotation = -0.138944
+
+[node name="Node2D5" parent="Node2D4/Node2D28/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(988, 126)
+rotation = -0.138944
+
+[node name="Node2D6" parent="Node2D4/Node2D28/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 89)
+rotation = -0.138944
+
+[node name="Node2D7" parent="Node2D4/Node2D28/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(664, 89)
+rotation = -0.138944
+
+[node name="Node2D8" parent="Node2D4/Node2D28/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(424, 89)
+rotation = -0.138944
+
+[node name="Node2D9" parent="Node2D4/Node2D28/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(207, 89)
+rotation = -0.138944
+
+[node name="Node2D10" parent="Node2D4/Node2D28/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 89)
+rotation = -0.138944
+
+[node name="Node2D11" parent="Node2D4/Node2D28/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 89)
+rotation = -0.138944
+
+[node name="Node2D13" parent="Node2D4/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(1507, 204)
+
+[node name="Node2D14" parent="Node2D4/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-329, 167)
+
+[node name="Node2D15" parent="Node2D4/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(1183, 167)
+
+[node name="Node2D16" parent="Node2D4/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(943, 167)
+
+[node name="Node2D17" parent="Node2D4/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(726, 167)
+
+[node name="Node2D18" parent="Node2D4/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(210, 167)
+
+[node name="Node2D19" parent="Node2D4/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-54, 167)
+
+[node name="Node2D21" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(988, 396)
+
+[node name="Node2D22" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 359)
+
+[node name="Node2D23" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(664, 359)
+
+[node name="Node2D24" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(424, 359)
+
+[node name="Node2D25" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(207, 359)
+
+[node name="Node2D26" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 359)
+
+[node name="Node2D27" parent="Node2D4/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 359)
+
+[node name="Node2D29" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(718, 37)
+
+[node name="Node2D30" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(-1118, 0)
+
+[node name="Node2D31" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(394, 0)
+
+[node name="Node2D32" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(154, 0)
+
+[node name="Node2D33" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(-63, 0)
+
+[node name="Node2D34" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(-579, 0)
+
+[node name="Node2D35" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(-843, 0)
+
+[node name="Node2D36" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(75, -309)
+rotation = -3.11192
+
+[node name="Node2D4" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(0, 89)
+rotation = -0.138944
+
+[node name="Node2D5" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(988, 126)
+rotation = -0.138944
+
+[node name="Node2D6" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 89)
+rotation = -0.138944
+
+[node name="Node2D7" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(664, 89)
+rotation = -0.138944
+
+[node name="Node2D8" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(424, 89)
+rotation = -0.138944
+
+[node name="Node2D9" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(207, 89)
+rotation = -0.138944
+
+[node name="Node2D10" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 89)
+rotation = -0.138944
+
+[node name="Node2D11" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 89)
+rotation = -0.138944
+
+[node name="Node2D12" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(519, 167)
+
+[node name="Node2D4" parent="Node2D4/Node2D36/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(0, 89)
+rotation = -0.138944
+
+[node name="Node2D5" parent="Node2D4/Node2D36/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(988, 126)
+rotation = -0.138944
+
+[node name="Node2D6" parent="Node2D4/Node2D36/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 89)
+rotation = -0.138944
+
+[node name="Node2D7" parent="Node2D4/Node2D36/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(664, 89)
+rotation = -0.138944
+
+[node name="Node2D8" parent="Node2D4/Node2D36/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(424, 89)
+rotation = -0.138944
+
+[node name="Node2D9" parent="Node2D4/Node2D36/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(207, 89)
+rotation = -0.138944
+
+[node name="Node2D10" parent="Node2D4/Node2D36/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 89)
+rotation = -0.138944
+
+[node name="Node2D11" parent="Node2D4/Node2D36/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 89)
+rotation = -0.138944
+
+[node name="Node2D13" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(1507, 204)
+
+[node name="Node2D14" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(-329, 167)
+
+[node name="Node2D15" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(1183, 167)
+
+[node name="Node2D16" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(943, 167)
+
+[node name="Node2D17" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(726, 167)
+
+[node name="Node2D18" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(210, 167)
+
+[node name="Node2D19" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(-54, 167)
+
+[node name="Node2D20" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(0, 359)
+
+[node name="Node2D4" parent="Node2D4/Node2D36/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(0, 89)
+rotation = -0.138944
+
+[node name="Node2D5" parent="Node2D4/Node2D36/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(988, 126)
+rotation = -0.138944
+
+[node name="Node2D6" parent="Node2D4/Node2D36/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 89)
+rotation = -0.138944
+
+[node name="Node2D7" parent="Node2D4/Node2D36/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(664, 89)
+rotation = -0.138944
+
+[node name="Node2D8" parent="Node2D4/Node2D36/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(424, 89)
+rotation = -0.138944
+
+[node name="Node2D9" parent="Node2D4/Node2D36/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(207, 89)
+rotation = -0.138944
+
+[node name="Node2D10" parent="Node2D4/Node2D36/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 89)
+rotation = -0.138944
+
+[node name="Node2D11" parent="Node2D4/Node2D36/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 89)
+rotation = -0.138944
+
+[node name="Node2D12" parent="Node2D4/Node2D36/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(519, 167)
+
+[node name="Node2D4" parent="Node2D4/Node2D36/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(0, 89)
+rotation = -0.138944
+
+[node name="Node2D5" parent="Node2D4/Node2D36/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(988, 126)
+rotation = -0.138944
+
+[node name="Node2D6" parent="Node2D4/Node2D36/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 89)
+rotation = -0.138944
+
+[node name="Node2D7" parent="Node2D4/Node2D36/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(664, 89)
+rotation = -0.138944
+
+[node name="Node2D8" parent="Node2D4/Node2D36/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(424, 89)
+rotation = -0.138944
+
+[node name="Node2D9" parent="Node2D4/Node2D36/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(207, 89)
+rotation = -0.138944
+
+[node name="Node2D10" parent="Node2D4/Node2D36/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 89)
+rotation = -0.138944
+
+[node name="Node2D11" parent="Node2D4/Node2D36/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 89)
+rotation = -0.138944
+
+[node name="Node2D13" parent="Node2D4/Node2D36/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(1507, 204)
+
+[node name="Node2D14" parent="Node2D4/Node2D36/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-329, 167)
+
+[node name="Node2D15" parent="Node2D4/Node2D36/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(1183, 167)
+
+[node name="Node2D16" parent="Node2D4/Node2D36/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(943, 167)
+
+[node name="Node2D17" parent="Node2D4/Node2D36/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(726, 167)
+
+[node name="Node2D18" parent="Node2D4/Node2D36/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(210, 167)
+
+[node name="Node2D19" parent="Node2D4/Node2D36/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-54, 167)
+
+[node name="Node2D21" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(988, 396)
+
+[node name="Node2D22" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 359)
+
+[node name="Node2D23" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(664, 359)
+
+[node name="Node2D24" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(424, 359)
+
+[node name="Node2D25" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(207, 359)
+
+[node name="Node2D26" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 359)
+
+[node name="Node2D27" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 359)
+
+[node name="Node2D28" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(-270, 0)
+
+[node name="Node2D4" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(0, 89)
+rotation = -0.138944
+
+[node name="Node2D5" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(988, 126)
+rotation = -0.138944
+
+[node name="Node2D6" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 89)
+rotation = -0.138944
+
+[node name="Node2D7" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(664, 89)
+rotation = -0.138944
+
+[node name="Node2D8" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(424, 89)
+rotation = -0.138944
+
+[node name="Node2D9" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(207, 89)
+rotation = -0.138944
+
+[node name="Node2D10" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 89)
+rotation = -0.138944
+
+[node name="Node2D11" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 89)
+rotation = -0.138944
+
+[node name="Node2D12" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(519, 167)
+
+[node name="Node2D4" parent="Node2D4/Node2D36/Node2D28/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(0, 89)
+rotation = -0.138944
+
+[node name="Node2D5" parent="Node2D4/Node2D36/Node2D28/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(988, 126)
+rotation = -0.138944
+
+[node name="Node2D6" parent="Node2D4/Node2D36/Node2D28/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 89)
+rotation = -0.138944
+
+[node name="Node2D7" parent="Node2D4/Node2D36/Node2D28/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(664, 89)
+rotation = -0.138944
+
+[node name="Node2D8" parent="Node2D4/Node2D36/Node2D28/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(424, 89)
+rotation = -0.138944
+
+[node name="Node2D9" parent="Node2D4/Node2D36/Node2D28/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(207, 89)
+rotation = -0.138944
+
+[node name="Node2D10" parent="Node2D4/Node2D36/Node2D28/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 89)
+rotation = -0.138944
+
+[node name="Node2D11" parent="Node2D4/Node2D36/Node2D28/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 89)
+rotation = -0.138944
+
+[node name="Node2D13" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(1507, 204)
+
+[node name="Node2D14" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(-329, 167)
+
+[node name="Node2D15" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(1183, 167)
+
+[node name="Node2D16" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(943, 167)
+
+[node name="Node2D17" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(726, 167)
+
+[node name="Node2D18" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(210, 167)
+
+[node name="Node2D19" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(-54, 167)
+
+[node name="Node2D20" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(0, 359)
+
+[node name="Node2D4" parent="Node2D4/Node2D36/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(0, 89)
+rotation = -0.138944
+
+[node name="Node2D5" parent="Node2D4/Node2D36/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(988, 126)
+rotation = -0.138944
+
+[node name="Node2D6" parent="Node2D4/Node2D36/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 89)
+rotation = -0.138944
+
+[node name="Node2D7" parent="Node2D4/Node2D36/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(664, 89)
+rotation = -0.138944
+
+[node name="Node2D8" parent="Node2D4/Node2D36/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(424, 89)
+rotation = -0.138944
+
+[node name="Node2D9" parent="Node2D4/Node2D36/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(207, 89)
+rotation = -0.138944
+
+[node name="Node2D10" parent="Node2D4/Node2D36/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 89)
+rotation = -0.138944
+
+[node name="Node2D11" parent="Node2D4/Node2D36/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 89)
+rotation = -0.138944
+
+[node name="Node2D12" parent="Node2D4/Node2D36/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(519, 167)
+
+[node name="Node2D4" parent="Node2D4/Node2D36/Node2D28/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(0, 89)
+rotation = -0.138944
+
+[node name="Node2D5" parent="Node2D4/Node2D36/Node2D28/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(988, 126)
+rotation = -0.138944
+
+[node name="Node2D6" parent="Node2D4/Node2D36/Node2D28/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 89)
+rotation = -0.138944
+
+[node name="Node2D7" parent="Node2D4/Node2D36/Node2D28/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(664, 89)
+rotation = -0.138944
+
+[node name="Node2D8" parent="Node2D4/Node2D36/Node2D28/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(424, 89)
+rotation = -0.138944
+
+[node name="Node2D9" parent="Node2D4/Node2D36/Node2D28/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(207, 89)
+rotation = -0.138944
+
+[node name="Node2D10" parent="Node2D4/Node2D36/Node2D28/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 89)
+rotation = -0.138944
+
+[node name="Node2D11" parent="Node2D4/Node2D36/Node2D28/Node2D20/Node2D12" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 89)
+rotation = -0.138944
+
+[node name="Node2D13" parent="Node2D4/Node2D36/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(1507, 204)
+
+[node name="Node2D14" parent="Node2D4/Node2D36/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-329, 167)
+
+[node name="Node2D15" parent="Node2D4/Node2D36/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(1183, 167)
+
+[node name="Node2D16" parent="Node2D4/Node2D36/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(943, 167)
+
+[node name="Node2D17" parent="Node2D4/Node2D36/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(726, 167)
+
+[node name="Node2D18" parent="Node2D4/Node2D36/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(210, 167)
+
+[node name="Node2D19" parent="Node2D4/Node2D36/Node2D28/Node2D20" instance=ExtResource("5_doie2")]
+position = Vector2(-54, 167)
+
+[node name="Node2D21" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(988, 396)
+
+[node name="Node2D22" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(-848, 359)
+
+[node name="Node2D23" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(664, 359)
+
+[node name="Node2D24" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(424, 359)
+
+[node name="Node2D25" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(207, 359)
+
+[node name="Node2D26" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(-309, 359)
+
+[node name="Node2D27" parent="Node2D4/Node2D36/Node2D28" instance=ExtResource("5_doie2")]
+position = Vector2(-573, 359)
+
+[node name="Node2D29" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(718, 37)
+
+[node name="Node2D30" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(-1118, 0)
+
+[node name="Node2D31" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(394, 0)
+
+[node name="Node2D32" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(154, 0)
+
+[node name="Node2D33" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(-63, 0)
+
+[node name="Node2D34" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(-579, 0)
+
+[node name="Node2D35" parent="Node2D4/Node2D36" instance=ExtResource("5_doie2")]
+position = Vector2(-843, 0)
+
+[node name="Node2D37" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(1063, -272)
+rotation = -3.11192
+
+[node name="Node2D38" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(-773, -309)
+rotation = -3.11192
+
+[node name="Node2D39" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(739, -309)
+rotation = -3.11192
+
+[node name="Node2D40" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(499, -309)
+rotation = -3.11192
+
+[node name="Node2D41" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(282, -309)
+rotation = -3.11192
+
+[node name="Node2D42" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(-234, -309)
+rotation = -3.11192
+
+[node name="Node2D43" parent="Node2D4" instance=ExtResource("5_doie2")]
+position = Vector2(-498, -309)
+rotation = -3.11192
+
+[node name="Node2D5" parent="." instance=ExtResource("5_doie2")]
+position = Vector2(2078, -52)
+
+[node name="Node2D6" parent="." instance=ExtResource("5_doie2")]
+position = Vector2(242, -89)
+
+[node name="Node2D7" parent="." instance=ExtResource("5_doie2")]
+position = Vector2(1754, -89)
+
+[node name="Node2D8" parent="." instance=ExtResource("5_doie2")]
+position = Vector2(1514, -89)
+
+[node name="Node2D9" parent="." instance=ExtResource("5_doie2")]
+position = Vector2(1297, -89)
+
+[node name="Node2D10" parent="." instance=ExtResource("5_doie2")]
+position = Vector2(781, -89)
+
+[node name="Node2D11" parent="." instance=ExtResource("5_doie2")]
+position = Vector2(517, -89)
+
+[connection signal="pressed" from="VBoxContainer/ReplayButton" to="." method="_on_replay_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
