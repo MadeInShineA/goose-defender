@@ -14,8 +14,7 @@ func _on_replay_button_pressed() -> void:
 
 
 func _on_exit_button_pressed() -> void:
-	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().quit()
 
 func _on_won_game() -> void:
 	get_tree().paused = true
