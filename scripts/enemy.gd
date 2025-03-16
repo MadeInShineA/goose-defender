@@ -42,17 +42,9 @@ func _physics_process(delta: float) -> void:
 	var next_path_position = navigation_agent_2d.get_next_path_position()
 	velocity = current_agent_position.direction_to(next_path_position) * SPEED
 	
-	if velocity == Vector2.ZERO:
-		animated_sprite.play("idle")
-	else:
-		animated_sprite.play("walk")
-	
 	move_and_slide()
 	
-	animated_sprite.flip_h = false if velocity.x > 0 else true
-	
 	if position.distance_to(target.position) < ATTACK_RANGE:
-		animated_sprite.play("attack")
 		target.take_damage(ATTACK_DAMAGE)
 
 func make_path():

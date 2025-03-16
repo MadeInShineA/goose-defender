@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfmk58g18r0ed"]
+
+[ext_resource type="Script" uid="uid://c1wvpwxv6tp6j" path="res://scripts/enemy.gd" id="1_wotfd"]
+[ext_resource type="Material" uid="uid://crd3kqv364xga" path="res://resources/enemy.tres" id="2_24171"]
+[ext_resource type="Texture2D" uid="uid://33753ss22kl4" path="res://icon.svg" id="3_5wlyj"]
+[ext_resource type="PackedScene" uid="uid://dh60tdtrgj7mm" path="res://scenes/blinker.tscn" id="4_iutvh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
+size = Vector2(63, 62.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3pup"]
+size = Vector2(63.5, 62.5)
+
+[node name="EnemyRanged" type="CharacterBody2D" groups=["CanBlink", "EnemyGroup"]]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_wotfd")
+SPEED = 50
+ATTACK_RANGE = 20
+life = 2
+whiten_material = ExtResource("2_24171")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_24171")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_5wlyj")
+
+[node name="hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(0.5, -0.75)
+shape = SubResource("RectangleShape2D_4gyqm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_a3pup")
+
+[node name="blinker" parent="." groups=["CanBlink"] instance=ExtResource("4_iutvh")]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 55.5
+target_desired_distance = 25.0
+avoidance_enabled = true
+radius = 24.79
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
