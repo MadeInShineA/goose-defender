@@ -39,6 +39,7 @@ func _ready() -> void:
 	show_weapon(current_weapon)
 
 func _process(delta: float) -> void:
+		
 	if is_stuned:
 		return
 		

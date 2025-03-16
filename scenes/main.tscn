@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://oqnnuvygfqck"]
+[gd_scene load_steps=16 format=3 uid="uid://oqnnuvygfqck"]
 
 [ext_resource type="PackedScene" uid="uid://0ivogf4nn6u6" path="res://scenes/player.tscn" id="1_85g3d"]
 [ext_resource type="PackedScene" uid="uid://8q3eg1pd6q54" path="res://scenes/map.tscn" id="1_trceg"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://bbfgryqgo020p" path="res://resources/enchantments/damage_enchantment.tres" id="5_tipki"]
 [ext_resource type="Shader" uid="uid://bcp4ueopqumyn" path="res://resources/hit-shader.gdshader" id="7_a8y0u"]
 [ext_resource type="Material" uid="uid://d15ctwuk0j6ql" path="res://resources/blur.tres" id="7_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://babloip0iqolv" path="res://scenes/pause_menu.tscn" id="9_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://btx548onk480a" path="res://scenes/game_over.tscn" id="10_a8y0u"]
 [ext_resource type="Resource" uid="uid://cbjvg8n70ve27" path="res://resources/enchantments/attack_speed_enchantment.tres" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://pwcdgcptf1p6" path="res://scenes/wave_handler.tscn" id="13_trceg"]
@@ -24,11 +25,11 @@ shader_parameter/whiten = false
 [node name="map" parent="." instance=ExtResource("1_trceg")]
 position = Vector2(0, 7)
 
-[node name="Player2" parent="map" instance=ExtResource("1_85g3d")]
+[node name="Player" parent="map" instance=ExtResource("1_85g3d")]
 position = Vector2(1136, 800)
 whiten_material = SubResource("ShaderMaterial_trceg")
 
-[node name="Camera2D" type="Camera2D" parent="map/Player2"]
+[node name="Camera2D" type="Camera2D" parent="map/Player"]
 position = Vector2(0.199978, -0.400005)
 scale = Vector2(0.2, 0.2)
 zoom = Vector2(3, 4)
@@ -68,6 +69,9 @@ size_flags_vertical = 4
 [node name="GameOver" parent="CanvasLayer" instance=ExtResource("10_a8y0u")]
 process_mode = 3
 visible = false
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("9_a8y0u")]
+process_mode = 3
 
 [node name="EnchantmentManager" parent="." instance=ExtResource("3_sugp2")]
 visible = false
