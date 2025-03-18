@@ -32,7 +32,7 @@ script = ExtResource("7_muem4")
 name = ""
 type = ExtResource("8_jbj1t")
 amount = 3
-time = 2.0
+time = 1.0
 metadata/_custom_type_script = "uid://do4vr3n6kktx5"
 
 [sub_resource type="Resource" id="Resource_dp3eg"]
@@ -45,7 +45,7 @@ script = ExtResource("7_muem4")
 name = ""
 type = ExtResource("8_jbj1t")
 amount = 5
-time = 5.0
+time = 1.0
 metadata/_custom_type_script = "uid://do4vr3n6kktx5"
 
 [sub_resource type="Resource" id="Resource_pm3ni"]
@@ -58,7 +58,7 @@ script = ExtResource("7_muem4")
 name = ""
 type = ExtResource("8_jbj1t")
 amount = 10
-time = 3.0
+time = 2.0
 metadata/_custom_type_script = "uid://do4vr3n6kktx5"
 
 [sub_resource type="Resource" id="Resource_og1vs"]

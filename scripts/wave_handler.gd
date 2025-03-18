@@ -15,7 +15,7 @@ var current_wave: int = 0
 var last_wave: int
 
 func _ready() -> void:
-	wave_timer.wait_time = 15
+	wave_timer.wait_time = 10
 	last_wave = waves.size()
 	
 func start_wave(wave: Wave):
