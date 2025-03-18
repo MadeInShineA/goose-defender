@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://lanscyxfaw13" path="res://scripts/weapons/weapon.gd" id="1_3gxsk"]
 [ext_resource type="Texture2D" uid="uid://cal1lg0lxkg2" path="res://sprites/staves/staff16.png" id="2_ov8dy"]
 [ext_resource type="PackedScene" uid="uid://duo8yawgjwbj8" path="res://scenes/fire_projectile.tscn" id="2_xh1k6"]
-[ext_resource type="AudioStream" uid="uid://3ts1by0g4ey5" path="res://music/sound_effect/rock-destroy-6409.mp3" id="4_v8501"]
+[ext_resource type="AudioStream" uid="uid://copm3d0fgxmpm" path="res://music/sound_effect/fireball-whoosh-2-179126.mp3" id="4_v8501"]
 
 [node name="FireStaff" type="Node2D" node_paths=PackedStringArray("audio_player")]
 script = ExtResource("1_3gxsk")

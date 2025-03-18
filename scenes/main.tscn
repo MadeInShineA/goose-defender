@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://oqnnuvygfqck"]
+[gd_scene load_steps=29 format=3 uid="uid://oqnnuvygfqck"]
 
 [ext_resource type="Script" uid="uid://bglgfo1x2mn7t" path="res://scripts/main.gd" id="1_0ld40"]
 [ext_resource type="PackedScene" uid="uid://0ivogf4nn6u6" path="res://scenes/player.tscn" id="1_85g3d"]
@@ -31,13 +31,39 @@ shader_parameter/whiten = false
 script = ExtResource("7_muem4")
 name = ""
 type = ExtResource("8_jbj1t")
-amount = 1
-time = 0.0
+amount = 3
+time = 2.0
 metadata/_custom_type_script = "uid://do4vr3n6kktx5"
 
 [sub_resource type="Resource" id="Resource_dp3eg"]
 script = ExtResource("6_jkv2x")
 enemy_sequences = Array[ExtResource("7_muem4")]([SubResource("Resource_yc10j")])
+metadata/_custom_type_script = "uid://bvocwdyc37qxq"
+
+[sub_resource type="Resource" id="Resource_jscy8"]
+script = ExtResource("7_muem4")
+name = ""
+type = ExtResource("8_jbj1t")
+amount = 5
+time = 5.0
+metadata/_custom_type_script = "uid://do4vr3n6kktx5"
+
+[sub_resource type="Resource" id="Resource_pm3ni"]
+script = ExtResource("6_jkv2x")
+enemy_sequences = Array[ExtResource("7_muem4")]([SubResource("Resource_jscy8")])
+metadata/_custom_type_script = "uid://bvocwdyc37qxq"
+
+[sub_resource type="Resource" id="Resource_y6deb"]
+script = ExtResource("7_muem4")
+name = ""
+type = ExtResource("8_jbj1t")
+amount = 10
+time = 3.0
+metadata/_custom_type_script = "uid://do4vr3n6kktx5"
+
+[sub_resource type="Resource" id="Resource_og1vs"]
+script = ExtResource("6_jkv2x")
+enemy_sequences = Array[ExtResource("7_muem4")]([SubResource("Resource_y6deb")])
 metadata/_custom_type_script = "uid://bvocwdyc37qxq"
 
 [node name="Main" type="Node2D"]
@@ -65,7 +91,7 @@ position = Vector2(1137, 635)
 
 [node name="WaveHandler" parent="." instance=ExtResource("13_trceg")]
 position = Vector2(0, -7)
-waves = Array[ExtResource("6_jkv2x")]([SubResource("Resource_dp3eg")])
+waves = Array[ExtResource("6_jkv2x")]([SubResource("Resource_dp3eg"), SubResource("Resource_pm3ni"), SubResource("Resource_og1vs")])
 
 [node name="MobSpawner" type="Node2D" parent="WaveHandler" groups=["MobSpawner"]]
 position = Vector2(1506, 207)

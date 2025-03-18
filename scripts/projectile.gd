@@ -18,7 +18,7 @@ func _ready():
 
 func _on_area_entered(area):
 	var target = area.get_parent()
-	if (target.is_in_group("EnemyGroup") and not SHOOTER.is_in_group("EnemyGroup")) or (target.is_in_group("PlayerGroup") and not SHOOTER.is_in_group("PlayerGroup")) and not is_hit:  # Check if the projectile hits an enemy
+	if target and SHOOTER and ((target.is_in_group("EnemyGroup") and not SHOOTER.is_in_group("EnemyGroup")) or (target.is_in_group("PlayerGroup") and not SHOOTER.is_in_group("PlayerGroup")) and not is_hit):  # Check if the projectile hits an enemy
 		is_hit = true
 		target.take_damage(DAMAGE)
 		animated_sprite_2d.play("hit_animation")  # Play the hit animation
