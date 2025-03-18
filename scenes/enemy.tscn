@@ -17,6 +17,7 @@ size = Vector2(63.5, 62.5)
 [node name="Enemy" type="CharacterBody2D" groups=["CanBlink", "EnemyGroup"]]
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_a3pup")
+MAX_LIFE = 3
 SPEED = 50
 whiten_material = ExtResource("2_tjssy")
 
