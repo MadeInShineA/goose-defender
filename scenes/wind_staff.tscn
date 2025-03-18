@@ -8,7 +8,7 @@
 [node name="WindStaff" type="Node2D" node_paths=PackedStringArray("audio_player") groups=["Enchantable"]]
 script = ExtResource("1_1mutb")
 projectile_scene = ExtResource("2_cy38i")
-base_damage = 10.0
+base_damage = 3
 base_attack_speed = 0.4
 audio_player = NodePath("AudioStreamPlayer")
 

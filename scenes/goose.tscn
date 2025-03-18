@@ -142,7 +142,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_wf0t2"]
 radius = 20.025
 
-[node name="Goose" type="Node2D"]
+[node name="Goose" type="Node2D" groups=["GooseGroup"]]
 script = ExtResource("1_g7ad0")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]

@@ -29,11 +29,11 @@ func _ready() -> void:
 	for weapon in $Weapons.get_children():
 		print(weapon.name)
 		weapon.set_process(false)
+		weapon.SHOOTER = self
 		weapon.hide()
 		weapons.append(weapon)
 	
 	# Select random weapon on start
-	print(weapons)
 	current_weapon = weapons[randi() % weapons.size()]
 	show_weapon(current_weapon)
 

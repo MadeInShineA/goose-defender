@@ -8,7 +8,7 @@
 [node name="EarthStaff" type="Node2D" node_paths=PackedStringArray("audio_player") groups=["Enchantable"]]
 script = ExtResource("1_capws")
 projectile_scene = ExtResource("2_ovc4x")
-base_damage = 7.0
+base_damage = 2
 base_attack_speed = 0.7
 audio_player = NodePath("AudioStreamPlayer")
 

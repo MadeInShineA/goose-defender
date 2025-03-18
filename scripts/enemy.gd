@@ -7,6 +7,7 @@ signal died
 
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@export var weapon: Weapon
 
 @export var MAX_LIFE: int = 10
 
@@ -16,18 +17,28 @@ signal died
 @onready var hurtbox = $hurtbox
 @onready var blinker = $blinker
 @onready var colision_box = $CollisionShape2D
-@export var target: CharacterBody2D
+
+@export var target: Node2D
 @export var whiten_material: ShaderMaterial
 
 const whiten_duration: float = 0.15
 const blinking_duration = 1
-var life: int = MAX_LIFE
+var life: int = 5
+
 
 func  _ready() -> void:
 	call_deferred("enemy_setup")
-	var player: Node2D = get_tree().get_first_node_in_group("PlayerGroup")
-	target = player
+	var goose = get_tree().get_first_node_in_group("GooseGroup")
+	var weapons = $Weapons.get_children()
+		
+	# Select random weapon on start
+	weapon = weapons[randi() % weapons.size()]
+	weapon.show()
+	weapon.SHOOTER = self
+	
+	target = goose
 	navigation_agent_2d.target_desired_distance = ATTACK_RANGE - 5
+	
 	
 func enemy_setup():
 	await get_tree().physics_frame
@@ -39,6 +50,8 @@ func _physics_process(delta: float) -> void:
 		navigation_agent_2d.target_position = target.global_position
 	if navigation_agent_2d.is_navigation_finished():
 		return
+	weapon.attack()
+		
 	
 	var current_agent_position = global_position
 	var next_path_position = navigation_agent_2d.get_next_path_position()
@@ -58,17 +71,12 @@ func take_damage(damage_amount):
 		died.emit()
 		queue_free()
 	else:
+		print(life)
+		health_changed.emit()
 		show_blink()
 		
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	if area in get_tree().get_nodes_in_group("IsProjectile"):
-		life -= 1
-		if life == 0:
-			self.queue_free()
-			died.emit()
-		else:
-			health_changed.emit()
-			show_blink()
+	pass
 			
 func show_blink():
 	whiten_material.set_shader_parameter("whiten", true)

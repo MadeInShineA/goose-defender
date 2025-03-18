@@ -60,7 +60,7 @@ limit_right = 1695
 limit_bottom = 1184
 position_smoothing_enabled = true
 
-[node name="Goose" parent="." groups=["GooseGroup"] instance=ExtResource("2_choun")]
+[node name="Goose" parent="." instance=ExtResource("2_choun")]
 position = Vector2(1137, 635)
 
 [node name="WaveHandler" parent="." instance=ExtResource("13_trceg")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ghue8q3t70uy"]
+[gd_scene load_steps=15 format=3 uid="uid://ghue8q3t70uy"]
 
 [ext_resource type="Script" uid="uid://c1wvpwxv6tp6j" path="res://scripts/enemy.gd" id="1_a3pup"]
 [ext_resource type="Texture2D" uid="uid://33753ss22kl4" path="res://icon.svg" id="2_40wdo"]
@@ -7,25 +7,30 @@
 [ext_resource type="Texture2D" uid="uid://beag32ac54wu6" path="res://sprites/healthbar/standard-full-1.png" id="4_md484"]
 [ext_resource type="PackedScene" uid="uid://dh60tdtrgj7mm" path="res://scenes/blinker.tscn" id="5_gl05p"]
 [ext_resource type="Script" uid="uid://hik1uj5t7l64" path="res://scripts/ennemy_health_bar.gd" id="5_nenq2"]
+[ext_resource type="PackedScene" uid="uid://i2ee1kyoasqm" path="res://scenes/ice_staff.tscn" id="8_md484"]
+[ext_resource type="PackedScene" uid="uid://dp6te3cuna11n" path="res://scenes/earth_staff.tscn" id="8_w8i8w"]
+[ext_resource type="PackedScene" uid="uid://y8av8bqvegr8" path="res://scenes/fire_staff.tscn" id="10_otmr2"]
+[ext_resource type="PackedScene" uid="uid://c031wprce88hi" path="res://scenes/wind_staff.tscn" id="11_wtq4b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
-size = Vector2(63, 62.5)
+size = Vector2(25.625, 27.0625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a3pup"]
-size = Vector2(63.5, 62.5)
+size = Vector2(14.9375, 12.8125)
+
+[sub_resource type="ImageTexture" id="ImageTexture_j0cyh"]
 
 [node name="Enemy" type="CharacterBody2D" groups=["CanBlink", "EnemyGroup"]]
-scale = Vector2(0.2, 0.2)
 script = ExtResource("1_a3pup")
-MAX_LIFE = 3
+MAX_LIFE = 5
 SPEED = 50
 whiten_material = ExtResource("2_tjssy")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = -40.0
-offset_top = -50.0
-offset_right = 30.0
-offset_bottom = -35.0
+offset_left = -17.0
+offset_top = -24.0
+offset_right = 16.0
+offset_bottom = -17.0
 nine_patch_stretch = true
 texture_under = ExtResource("3_nenq2")
 texture_progress = ExtResource("4_md484")
@@ -33,16 +38,20 @@ script = ExtResource("5_nenq2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = ExtResource("2_tjssy")
-scale = Vector2(0.5, 0.5)
+position = Vector2(-1.90735e-06, -2)
+scale = Vector2(0.21875, 0.226562)
 texture = ExtResource("2_40wdo")
+flip_h = true
 
 [node name="hurtbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
-position = Vector2(0.5, -0.75)
+position = Vector2(0.1875, -2.53125)
 shape = SubResource("RectangleShape2D_4gyqm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9.53674e-07, -2.38419e-07)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_a3pup")
 
 [node name="blinker" parent="." groups=["CanBlink"] instance=ExtResource("5_gl05p")]
@@ -53,6 +62,30 @@ shape = SubResource("RectangleShape2D_a3pup")
 wait_time = 0.5
 autostart = true
 
-[connection signal="health_changed" from="." to="." method="update"]
+[node name="Weapons" type="Node2D" parent="."]
+position = Vector2(-1.13687e-13, 0)
+scale = Vector2(1, 1)
+
+[node name="EarthStaff" parent="Weapons" instance=ExtResource("8_w8i8w")]
+visible = false
+position = Vector2(11, 0)
+enchantable_name = "Earth Staff"
+enchantment_texture = SubResource("ImageTexture_j0cyh")
+
+[node name="IceStaff" parent="Weapons" instance=ExtResource("8_md484")]
+visible = false
+position = Vector2(11, 0)
+enchantable_name = "Ice Staff"
+
+[node name="FireStaff" parent="Weapons" groups=["Enchantable"] instance=ExtResource("10_otmr2")]
+visible = false
+position = Vector2(11, 0)
+enchantable_name = "Fire Staff"
+
+[node name="WindStaff" parent="Weapons" instance=ExtResource("11_wtq4b")]
+visible = false
+position = Vector2(11, 0)
+
+[connection signal="health_changed" from="." to="TextureProgressBar" method="_on_enemy_health_changed"]
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

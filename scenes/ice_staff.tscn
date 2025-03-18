@@ -8,7 +8,7 @@
 [node name="IceStaff" type="Node2D" node_paths=PackedStringArray("audio_player") groups=["Enchantable"]]
 script = ExtResource("1_nl8gd")
 projectile_scene = ExtResource("2_nl8gd")
-base_damage = 5.0
+base_damage = 1
 base_attack_speed = 1.0
 audio_player = NodePath("AudioStreamPlayer")
 

@@ -7,6 +7,9 @@ func _ready() -> void:
 	update()
 	
 func update():
+	print("Enemy hit")
+	print(enemy.life)
+	print(enemy.MAX_LIFE)
 	print(enemy.life * 100 / enemy.MAX_LIFE)
 	value = enemy.life * 100 / enemy.MAX_LIFE
 	

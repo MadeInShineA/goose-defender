@@ -8,7 +8,7 @@
 [node name="FireStaff" type="Node2D" node_paths=PackedStringArray("audio_player")]
 script = ExtResource("1_3gxsk")
 projectile_scene = ExtResource("2_xh1k6")
-base_damage = 5.0
+base_damage = 1
 base_attack_speed = 1.0
 audio_player = NodePath("AudioStreamPlayer")
 

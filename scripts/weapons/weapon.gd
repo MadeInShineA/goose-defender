@@ -7,14 +7,16 @@ class_name Weapon
 @onready var sprite: Sprite2D = $Sprite2D
 
 @export var projectile_scene: PackedScene
-@export var base_damage: float
+@export var base_damage: int
 @export var base_attack_speed: float
 @export var element: Element
 @export var audio_player :AudioStreamPlayer
 
+
 @onready var current_damage: float = base_damage
 @onready var current_attack_speed: float = base_attack_speed
 
+var SHOOTER
 var can_attack: bool = true
 
 func _ready():
@@ -24,9 +26,14 @@ func _ready():
 	attack_timer.start()
 
 func _process(delta: float) -> void:
-	look_at(get_global_mouse_position())
-	if Input.is_action_just_pressed("fire"):
-		attack()
+	if SHOOTER is Player:
+		look_at(get_global_mouse_position())
+		if Input.is_action_just_pressed("fire"):
+			attack()
+	elif SHOOTER is Enemy:
+		look_at(get_tree().get_first_node_in_group("PlayerGroup").position)
+		
+	
 
 func attack():
 	if can_attack:
@@ -34,7 +41,8 @@ func attack():
 		var projectile_instance = projectile_scene.instantiate()
 		get_tree().root.add_child(projectile_instance)
 		projectile_instance.global_position = fire_point.global_position
-		
+		projectile_instance.DAMAGE = current_damage
+		projectile_instance.SHOOTER = SHOOTER
 		projectile_instance.rotation = rotation
 		can_attack = false
 		attack_timer.start()
